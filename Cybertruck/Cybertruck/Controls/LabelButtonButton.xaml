@@ -1,0 +1,57 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<StackLayout xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:button="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
+             xmlns:gradient="clr-namespace:Syncfusion.XForms.Graphics;assembly=Syncfusion.Core.XForms"
+             xmlns:abstractions="clr-namespace:ImageCircle.Forms.Plugin.Abstractions;assembly=ImageCircle.Forms.Plugin"
+             mc:Ignorable="d"
+             x:Name="ControlLabelButton"  Spacing="-5"
+             HorizontalOptions="Center"
+             x:Class="Cybertruck.Controls.LabelButtonButton">
+    <StackLayout.GestureRecognizers>
+        <TapGestureRecognizer Tapped="ButtonTapped"/>
+    </StackLayout.GestureRecognizers>
+    <Label Text="{Binding HeaderText, Source={x:Reference ControlLabelButton}}"
+           HorizontalOptions="Center"  
+           x:Name="headerText"
+           IsVisible="{Binding Path=Text, Source={x:Reference headerText}, Converter={StaticResource SelfVisibilityConverter}}"  
+           Style="{DynamicResource LabelMicroStyle}"/>
+    
+    <Grid Padding="0">
+       
+        
+        <Image  HorizontalOptions="Center" VerticalOptions="Center" Rotation="-25" Source="circleshadow.png" Aspect="AspectFill" Opacity="0.5"/>
+
+        <button:SfButton HorizontalOptions="Center"
+                        VerticalOptions="Center"
+                         HeightRequest="65"
+                        WidthRequest="65"
+                        CornerRadius="65"
+                        IsEnabled="False" BackgroundColor="#FF2B3034"
+                        x:Name="ButtonControl"
+                        BorderColor="#FF1B2024"
+                        BorderWidth="1.5">
+            <gradient:SfGradientView>
+                <gradient:SfGradientView.BackgroundBrush>
+                    <gradient:SfLinearGradientBrush>
+                        <gradient:SfLinearGradientBrush.GradientStops>
+                            <gradient:SfGradientStop Color="#FF2B3034"       
+                                                     x:Name="SfGradientStop1"                                            
+                                                     Offset="0.4" />
+                            <gradient:SfGradientStop Color="#FF212528"          
+                                                     x:Name="SfGradientStop2"                                        
+                                                     Offset="1.0" />
+                        </gradient:SfLinearGradientBrush.GradientStops>
+                    </gradient:SfLinearGradientBrush>
+                </gradient:SfGradientView.BackgroundBrush>
+            </gradient:SfGradientView>
+        </button:SfButton>
+
+        <Image Source="{Binding ButtonIcon, Source={x:Reference ControlLabelButton}}"
+                HeightRequest="{Binding ImageHeight,Source={x:Reference ControlLabelButton}}" 
+                HorizontalOptions="Center" />
+    </Grid>
+
+</StackLayout>

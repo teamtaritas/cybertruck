@@ -1,0 +1,337 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:magic="clr-namespace:MagicGradients;assembly=MagicGradients"
+             xmlns:controls="clr-namespace:Cybertruck.Controls"
+             xmlns:abstractions="clr-namespace:ImageCircle.Forms.Plugin.Abstractions;assembly=ImageCircle.Forms.Plugin"
+             xmlns:gauge="clr-namespace:Syncfusion.SfGauge.XForms;assembly=Syncfusion.SfGauge.XForms"
+             mc:Ignorable="d"
+             BackgroundColor="#FF18181E"
+             x:Class="Cybertruck.Views.Page3">
+    <ContentPage.Padding>
+        <OnPlatform x:TypeArguments="Thickness" >
+            <On Platform="iOS" 
+                Value="0,0,0,0"/>
+            <On Platform="Android" 
+                Value="0"/>
+        </OnPlatform>
+    </ContentPage.Padding>
+
+    <ScrollView x:Name="scrollview" InputTransparent="True" VerticalOptions="Start">
+        <Grid>
+            <magic:GradientView VerticalOptions="FillAndExpand">
+                <magic:GradientView.GradientSource>
+                    <magic:LinearGradient>
+                        <magic:GradientStop Color="#FF31353C" Offset="0.4" />
+                        <magic:GradientStop Color="#FF1E1F24" Offset="1" />
+                    </magic:LinearGradient>
+                </magic:GradientView.GradientSource>
+            </magic:GradientView>
+
+
+            <StackLayout Spacing="0">
+
+                <StackLayout Orientation="Horizontal"  
+                     HorizontalOptions="FillAndExpand"
+                     VerticalOptions="Start">
+
+                    <!--#region Settings button 1 -->
+                    <Grid>
+                        <controls:SettingsControl HorizontalOptions="End"  HeightRequest="55">
+                            <controls:SettingsControl.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="GoBack"/>
+                            </controls:SettingsControl.GestureRecognizers>
+                        </controls:SettingsControl>
+
+                        <StackLayout HorizontalOptions="Center"
+                                         VerticalOptions="Center"
+                                         Spacing="4">
+                            <BoxView WidthRequest="12" HorizontalOptions="Center" VerticalOptions="Center"
+                                     Color="White"
+                                     HeightRequest="1"/>
+                            <BoxView WidthRequest="7" HorizontalOptions="Start" VerticalOptions="Center"
+                                     Color="White"
+                                     HeightRequest="1"/>
+                        </StackLayout>
+                    </Grid>
+                    <!--#endregion-->
+
+                    <StackLayout Spacing="0"
+                                 HorizontalOptions="FillAndExpand"
+                                 VerticalOptions="Center">
+                        <Label Text="Tesla"
+                               HorizontalOptions="Center"
+                               VerticalOptions="Center"
+                               Style="{DynamicResource LabelMicroStyle}"/>
+                        <Label Text="Cybertruck" 
+                               HorizontalOptions="Center"
+                               VerticalOptions="Center"
+                               Style="{DynamicResource LabelHeaderStyle}"/>
+                    </StackLayout>
+
+                    <controls:SettingsControl HorizontalOptions="End" 
+                                              ControlImage="user.png" HeightRequest="55"/>
+                </StackLayout>
+
+                <Frame BorderColor="#FF40444B"
+                        HasShadow="True"
+                        IsClippedToBounds="True"
+                        BackgroundColor="Transparent" 
+                        CornerRadius="45"
+                        Padding="0,5"
+                        VerticalOptions="Start">
+
+                    <Grid VerticalOptions="FillAndExpand">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="335"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+
+                        <Grid VerticalOptions="Start" 
+                                  Margin="30,10,20,0">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+
+                            <BoxView BackgroundColor="#FF15161A"
+                                         Margin="0,0,0,0"
+                                         Grid.ColumnSpan="2"
+                                         HorizontalOptions="Center"
+                                         VerticalOptions="Start"
+                                         HeightRequest="3.5"
+                                         WidthRequest="45"/>
+
+                            <StackLayout Grid.Row="1" 
+                                             VerticalOptions="Center">
+                                <Label Text="A/C is ON"
+                                            Style="{DynamicResource LabelLargeBoldStyle}"/>
+                                <Label Text="Currently 27&#186;C" 
+                                             Style="{DynamicResource LabelMicroStyle}"/>
+                                <Label Text="Will change in 2min" 
+                                              Margin="0,-5,0,0"
+                                           Style="{DynamicResource LabelMicroStyle}"/>
+                            </StackLayout>
+
+                            <controls:PowerbuttonControl Grid.Row="1" Grid.Column="1" HorizontalOptions="End" Margin="0,0,10,0"/>
+                        </Grid>
+
+                        <Image Grid.Row="1" HorizontalOptions="Center" VerticalOptions="Center" Rotation="-20" Source="circleshadow.png" Aspect="AspectFill" />
+
+                        <Grid Grid.Row="1"  
+                                  x:Name="grid1"
+                                  Padding="25">
+                            <Grid>
+                                <abstractions:CircleImage Margin="25" FillColor="#FF131315" Aspect="AspectFit" BorderColor="#FF131315" BorderThickness="1"/>
+                                <abstractions:CircleImage Margin="30" FillColor="#FF18181A" Aspect="AspectFit" BorderThickness="1"  BorderColor="#FF1E1E20"/>
+                                <abstractions:CircleImage Margin="70"  FillColor="#FF141416" Aspect="AspectFit" BorderThickness="1" BorderColor="#FF1E1E20"/>
+                            </Grid>
+
+                            <StackLayout HorizontalOptions="Center"
+                                             VerticalOptions="Center" 
+                                             Spacing="-5">
+                                <StackLayout Spacing="0" Orientation="Horizontal">
+                                    <Label Text="{Binding Value}" 
+                                           TextColor="White"
+                                           HorizontalOptions="Center"
+                                           VerticalOptions="Center"
+                                           FontSize="30"
+                                           FontAttributes="Bold"/>
+                                    <Label Text="&#186;C" 
+                                           TextColor="White"
+                                           HorizontalOptions="Center"
+                                           VerticalOptions="Center"
+                                           FontSize="30"
+                                           FontAttributes="Bold"/>
+                                  
+                                </StackLayout>
+                                <Label Text="Cooling..."
+                                           TextColor="White" Style="{DynamicResource LabelMicroStyle}"
+                                           HorizontalOptions="Center"
+                                           VerticalOptions="Center" />
+                            </StackLayout>
+
+                            <Grid IsEnabled="False">
+                                <gauge:SfCircularGauge >
+
+                                    <gauge:SfCircularGauge.Scales>
+                                        <gauge:Scale ShowLabels="False" ShowTicks="False" ShowRim="False"  SweepAngle="{Binding Path=Value, Source={x:Reference Pointer1}}" StartAngle="90"  StartValue="0" EndValue="90"  >
+
+                                            <gauge:Scale.Pointers>
+                                                <gauge:RangePointer x:Name="RangePointer"  Value="90" Offset="0.765" Thickness="35"  RangeCap="Start" Color="#0682F6"/>
+
+                                                <gauge:MarkerPointer EnableDragging="True" MarkerShape="Circle" MarkerWidth="28" MarkerHeight="28" Color="Transparent"
+                                         Value="{Binding Path=Value, Source={x:Reference Pointer1}}" Offset="0.8"/>
+                                            </gauge:Scale.Pointers>
+
+                                        </gauge:Scale>
+
+                                        <gauge:Scale  ShowLabels="False" ShowTicks="False" ShowRim="False" StartAngle="0" SweepAngle="360"  >
+                                        </gauge:Scale>
+
+                                    </gauge:SfCircularGauge.Scales>
+
+
+                                </gauge:SfCircularGauge>
+                            </Grid>
+
+                            <Grid>
+                                <!--#region Inner Guage -->
+                                <Grid >
+                                    <gauge:SfCircularGauge PointerPositionChanged="SfCircularGauge_PointerPositionChanged">
+                                        <gauge:SfCircularGauge.Scales>
+                                            <gauge:Scale  ShowLabels="False" ScaleStartOffset="1" ShowRim="False"  SweepAngle="315" MinorTicksPerInterval="0" StartAngle="90" StartValue="0" EndValue="315"  >
+                                                <gauge:Scale.Pointers>
+                                                    <gauge:MarkerPointer  Offset="0.75" x:Name="Pointer1" EnableDragging="True" MarkerShape="Image" ImageSource="thumb.png" Color="#FF262A2D" MarkerHeight="40" MarkerWidth="40" Value="225"/>
+                                                </gauge:Scale.Pointers>
+
+                                                <gauge:Scale.MajorTickSettings>
+                                                    <gauge:TickSettings Color ="Transparent" Thickness="2" Length="10" Offset="0.97"/>
+                                                </gauge:Scale.MajorTickSettings>
+                                            </gauge:Scale>
+
+                                        </gauge:SfCircularGauge.Scales>
+                                    </gauge:SfCircularGauge>
+                                </Grid>
+                                <!--#endregion-->
+
+                                <!--#region Outer Ticks -->
+                                <gauge:SfCircularGauge>
+                                    <gauge:SfCircularGauge.Scales>
+                                        <gauge:Scale  ShowLabels="False" ShowRim="False" SweepAngle="360" MinorTicksPerInterval="0" StartAngle="90" StartValue="0" EndValue="360" Interval="45">
+                                            <gauge:Scale.Pointers>
+                                                <!--<gauge:MarkerPointer EnableDragging="True" MarkerShape="Circle" Color="Red" MarkerHeight="40" MarkerWidth="40" Value="0" />-->
+                                            </gauge:Scale.Pointers>
+
+                                            <gauge:Scale.MajorTickSettings>
+                                                <gauge:TickSettings Color ="#FF0E95E6" Thickness="2" Length="10" Offset="0.97"/>
+                                            </gauge:Scale.MajorTickSettings>
+                                        </gauge:Scale>
+
+                                    </gauge:SfCircularGauge.Scales>
+                                </gauge:SfCircularGauge>
+                                <!--#endregion-->
+                            </Grid>
+                        </Grid>
+
+                        <StackLayout Grid.Row="2"  
+                                     VerticalOptions="Center" Spacing="25" Margin="15,0,15,30">
+
+                            <Label Text="Fan speed"
+                                   HorizontalOptions="Center" VerticalOptions="Start"
+                                   Style="{DynamicResource LabelLargeBoldStyle}"/>
+
+                            <StackLayout Spacing="0">
+
+
+                                <Grid Margin="-20,0"
+                                      VerticalOptions="Center">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <Label Text="1"
+                                           FontSize="11"
+                                           HorizontalOptions="Center" x:Name="Label1"
+                                           Style="{DynamicResource LabelMicroStyle}"/>
+                                    <Label Grid.Column="1"
+                                           Text="2" x:Name="Label2"
+                                           FontSize="11"
+                                           HorizontalOptions="Center"
+                                           Style="{DynamicResource LabelMicroStyle}"/>
+                                    <Label Grid.Column="2"
+                                           FontSize="11"
+                                           Text="3" x:Name="Label3"
+                                           HorizontalOptions="Center"
+                                           Style="{DynamicResource LabelMicroStyle}"/>
+                                    <Label Grid.Column="3"
+                                           Text="4" x:Name="Label4"
+                                           FontSize="11"
+                                           HorizontalOptions="Center"
+                                           Style="{DynamicResource LabelMicroStyle}"/>
+                                    <Label Grid.Column="4"
+                                           Text="5" x:Name="Label5"
+                                           FontSize="11"
+                                           HorizontalOptions="Center"
+                                           Style="{DynamicResource LabelMicroStyle}"/>
+                                </Grid>
+
+                                <Slider Maximum="5" Margin="-5,0" WidthRequest="10" x:Name="slider" Value="3"
+                                        ThumbImageSource="smallthumb.png"  
+                                        MaximumTrackColor="#FF0F1012"
+                                        MinimumTrackColor="#FF0680D1"/>
+
+                                <!--<range:SfRangeSlider x:Name="rangeslider"  Minimum="1" HeightRequest="20" Maximum="5"   StepFrequency="1" VerticalOptions="Start"  Orientation="Horizontal" TickColor="Transparent" />-->
+
+                            </StackLayout>
+                        </StackLayout>
+
+                        <Label Grid.Row="3" 
+                               Margin="0,0,0,5"
+                               Text="Mode"
+                               HorizontalOptions="Center"
+                               Style="{DynamicResource LabelLargeBoldStyle}"/>
+
+                        <!--#region 4 buttons -->
+                        <Grid Grid.Row="4" 
+                                  Padding="20,0" >
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+
+                            <controls:LabelButtonButton HeaderText="Auto" ImageHeight="13"
+                                                    ButtonIcon="letterADarkGray.png">
+                                <controls:LabelButtonButton.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="ButtonClicked"/>
+                                </controls:LabelButtonButton.GestureRecognizers>
+                            </controls:LabelButtonButton>
+
+                            <controls:LabelButtonButton Grid.Column="1"
+                                                        HeaderText="Dry" ImageHeight="15"
+                                                        ButtonIcon="dryDarkGray.png">
+                                <controls:LabelButtonButton.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="ButtonClicked"/>
+                                </controls:LabelButtonButton.GestureRecognizers>
+                            </controls:LabelButtonButton>
+
+                            <controls:LabelButtonButton Grid.Column="2"
+                                                        HeaderText="Cool" 
+                                                        ButtonIcon="coolDarkGray.png">
+                                <controls:LabelButtonButton.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="ButtonClicked"/>
+                                </controls:LabelButtonButton.GestureRecognizers>
+                            </controls:LabelButtonButton>
+
+                            <controls:LabelButtonButton Grid.Column="3"
+                                                        HeaderText="Program" ImageHeight="17"
+                                                        ButtonIcon="timerDarkGray.png">
+                                <controls:LabelButtonButton.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="ButtonClicked"/>
+                                </controls:LabelButtonButton.GestureRecognizers>
+                            </controls:LabelButtonButton>
+
+                        </Grid>
+                        <!--#endregion-->
+                    </Grid>
+
+                </Frame>
+
+            </StackLayout>
+        </Grid>
+    </ScrollView>
+</ContentPage>

@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Grid xmlns="http://xamarin.com/schemas/2014/forms"
+      xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+      xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      xmlns:button="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
+      xmlns:gradient="clr-namespace:Syncfusion.XForms.Graphics;assembly=Syncfusion.Core.XForms"
+      mc:Ignorable="d" 
+      x:Class="Cybertruck.Controls.PowerbuttonControl" 
+      Padding="0" >
+    <Grid.GestureRecognizers>
+        <TapGestureRecognizer Tapped="ButtonTapped"/>
+    </Grid.GestureRecognizers>
+    <Image Source="p1.png"  Aspect="AspectFill" WidthRequest="75" HeightRequest="75" Margin="10,10,0,0"  HorizontalOptions="Center" VerticalOptions="Center"/>
+
+    <button:SfButton HorizontalOptions="Center"
+                     VerticalOptions="Center" BackgroundColor="Transparent"
+                     HeightRequest="65"
+                     WidthRequest="65" Clicked="ButtonTapped"
+                     CornerRadius="65" IsEnabled="False"
+                     x:Name="ButtonControl"
+                     BorderColor="#FF0E9BED" 
+                     BorderWidth="2">
+        <gradient:SfGradientView>
+            <gradient:SfGradientView.BackgroundBrush>
+                <gradient:SfLinearGradientBrush>
+                    <gradient:SfLinearGradientBrush.GradientStops>
+                        <gradient:SfGradientStop Color="#FF0361A7"  
+                                                 x:Name="SfGradientStop1"                                               
+                                                 Offset="0.4" />
+                        <gradient:SfGradientStop Color="#FF0E9BED"        
+                                                 x:Name="SfGradientStop2"                                        
+                                                 Offset="1.0" />
+                    </gradient:SfLinearGradientBrush.GradientStops>
+                </gradient:SfLinearGradientBrush>
+            </gradient:SfGradientView.BackgroundBrush>
+        </gradient:SfGradientView>
+    </button:SfButton>
+
+    <Image Source="power.png"
+           HeightRequest="15" 
+           x:Name="image"
+           HorizontalOptions="Center" />
+
+
+</Grid>
