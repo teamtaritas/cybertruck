@@ -1,5 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+<abstraction:BaseContentPage
+             xmlns:abstraction="clr-namespace:Cybertruck.Abstraction"
+             xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
@@ -9,12 +11,12 @@
              xmlns:controls="clr-namespace:Cybertruck.Controls" x:Name="page1"
              mc:Ignorable="d" StyleId="contentpage" BackgroundColor="#FF31353C"
              x:Class="Cybertruck.Views.Page1">
-    <ContentPage.Padding>
+    <abstraction:BaseContentPage.Padding>
         <OnPlatform x:TypeArguments="Thickness" >
             <On Platform="iOS" Value="0,10,0,0"/>
             <On Platform="Android" Value="0"/>
         </OnPlatform>
-    </ContentPage.Padding>
+    </abstraction:BaseContentPage.Padding>
     <Grid>
         <Grid x:Name="Grid1">
             <magic:GradientView VerticalOptions="FillAndExpand">
@@ -320,4 +322,4 @@
 
         </Grid>
     </Grid>
-</ContentPage>
+</abstraction:BaseContentPage>

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Cybertruck.Abstraction;
+using System;
 using System.Threading.Tasks;
 using Xamarin.Essentials;
 using Xamarin.Forms;
@@ -7,7 +8,7 @@ using Xamarin.Forms.Xaml;
 namespace Cybertruck.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class Page1 : ContentPage
+    public partial class Page1 : BaseContentPage
     {
         public Page1()
         {
@@ -42,7 +43,6 @@ namespace Cybertruck.Views
                 ButtonControl.BorderColor = Color.FromHex("#FF0E9BED");
                 SfGradientStop1.Color = Color.FromHex("#FF0361A7");
                 SfGradientStop2.Color = Color.FromHex("#FF0E9BED");
-                await Navigation.PushModalAsync(new Page2());
             }
             else{
                 image.Source = "lockDarkGray.png";
@@ -54,8 +54,9 @@ namespace Cybertruck.Views
                 ButtonControl2.BorderColor = Color.FromHex("#FF0E9BED");
                 SfGradientStop21.Color = Color.FromHex("#FF0361A7");
                 SfGradientStop22.Color = Color.FromHex("#FF0E9BED");
-                await Navigation.PushModalAsync(new Page2());
             }
+
+            await PushModelNextPage(new Page2());
         }
     }
 }

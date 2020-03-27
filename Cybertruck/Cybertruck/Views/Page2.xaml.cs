@@ -1,4 +1,5 @@
-﻿using Cybertruck.Models;
+﻿using Cybertruck.Abstraction;
+using Cybertruck.Models;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -9,7 +10,7 @@ using Xamarin.Forms.Xaml;
 namespace Cybertruck.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class Page2 : ContentPage
+    public partial class Page2 : BaseContentPage
     {
         private ObservableCollection<HelperModel> _informations;
         public ObservableCollection<HelperModel> Informations
@@ -47,7 +48,8 @@ namespace Cybertruck.Views
             ButtonControl.BorderColor = Color.FromHex("#FF0E9BED");
             SfGradientStop1.Color = Color.FromHex("#FF0361A7");
             SfGradientStop2.Color = Color.FromHex("#FF0E9BED");
-            await Navigation.PushModalAsync(new Page3());
+            
+            await PushModelNextPage(new Page3());
         }
     }
 }

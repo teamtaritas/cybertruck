@@ -1,5 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+<abstraction:BaseContentPage
+             xmlns:abstraction="clr-namespace:Cybertruck.Abstraction"
+             xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
@@ -10,14 +12,14 @@
              mc:Ignorable="d"
              BackgroundColor="#FF18181E"
              x:Class="Cybertruck.Views.Page3">
-    <ContentPage.Padding>
+    <abstraction:BaseContentPage.Padding>
         <OnPlatform x:TypeArguments="Thickness" >
             <On Platform="iOS" 
                 Value="0,10,0,0"/>
             <On Platform="Android" 
                 Value="0"/>
         </OnPlatform>
-    </ContentPage.Padding>
+    </abstraction:BaseContentPage.Padding>
 
     <ScrollView x:Name="scrollview" InputTransparent="True" VerticalOptions="Start">
         <Grid>
@@ -140,7 +142,7 @@
                                              VerticalOptions="Center" 
                                              Spacing="-5">
                                 <StackLayout Spacing="0" Orientation="Horizontal">
-                                    <Label Text="{Binding Value}" 
+                                    <Label Text="{Binding CoolingValue}" 
                                            TextColor="White"
                                            HorizontalOptions="Center"
                                            VerticalOptions="Center"
@@ -332,4 +334,4 @@
             </StackLayout>
         </Grid>
     </ScrollView>
-</ContentPage>
+</abstraction:BaseContentPage>

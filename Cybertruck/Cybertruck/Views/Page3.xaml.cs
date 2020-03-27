@@ -1,25 +1,25 @@
-﻿using Cybertruck.Controls;
+﻿using Cybertruck.Abstraction;
+using Cybertruck.Controls;
 using System;
-using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
 namespace Cybertruck.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class Page3 : ContentPage
+    public partial class Page3 : BaseContentPage
     {
         private string _value;
-        public string Value
+        public string CoolingValue
         {
             get { return _value; }
-            set { _value = value; OnPropertyChanged(nameof(Value)); }
+            set { _value = value; OnPropertyChanged(nameof(CoolingValue)); }
         }
 
         public Page3()
         {
             InitializeComponent();
             BindingContext = this;
-            Value = "24";
+            CoolingValue = "24";
         }
 
         private void GoBack(object sender, EventArgs e)
@@ -84,7 +84,7 @@ namespace Cybertruck.Views
             {
                 var value = args.pointerValue;
                 var result = ((double)value / 45);
-                Value = $"{Convert.ToInt32(result * 5)}";
+                CoolingValue = $"{Convert.ToInt32(result * 5)}";
             }
             catch (Exception ex)
             {
