@@ -19,19 +19,19 @@ namespace Cybertruck.Views
             var mainDisplayInfo = DeviceDisplay.MainDisplayInfo;
             if (mainDisplayInfo.Width>720)
             {
-                Grid1080.IsVisible = true;
-                Grid720.IsVisible = false;
+                Grid2.IsVisible = true;
+                Grid1.IsVisible = false;
             }
             else
             {
-                Grid1080.IsVisible = false;
-                Grid720.IsVisible = true;
+                Grid2.IsVisible = false;
+                Grid1.IsVisible = true;
             }
         }
 
         private async void ButtonTapped(object sender, EventArgs e)
         {
-            if (Grid1080.IsVisible)
+            if (Grid2.IsVisible)
             {
                 image.Source = "lockDarkGray.png";
                 ButtonControl.BorderColor = Color.FromHex("#FF1B2024");

@@ -41,6 +41,8 @@ namespace Cybertruck.Views
                     control.ButtonIcon = "letterADarkGray.png";
                 }
             }
+
+
             if (control.HeaderText == "Dry")
             {
                 if (control.ON)

@@ -297,4 +297,10 @@
   <ItemGroup>
     <BundleResource Include="Resources\user.png" />
   </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\b2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\button2.png" />
+  </ItemGroup>
 </Project>

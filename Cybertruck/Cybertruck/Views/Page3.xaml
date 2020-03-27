@@ -13,7 +13,7 @@
     <ContentPage.Padding>
         <OnPlatform x:TypeArguments="Thickness" >
             <On Platform="iOS" 
-                Value="0,0,0,0"/>
+                Value="0,10,0,0"/>
             <On Platform="Android" 
                 Value="0"/>
         </OnPlatform>
@@ -39,11 +39,12 @@
 
                     <!--#region Settings button 1 -->
                     <Grid>
-                        <controls:SettingsControl HorizontalOptions="End"  HeightRequest="55">
-                            <controls:SettingsControl.GestureRecognizers>
+                        <controls:SettingControl VerticalOptions="Start" HorizontalOptions="End">
+                            <controls:SettingControl.GestureRecognizers>
                                 <TapGestureRecognizer Tapped="GoBack"/>
-                            </controls:SettingsControl.GestureRecognizers>
-                        </controls:SettingsControl>
+                            </controls:SettingControl.GestureRecognizers>
+                        </controls:SettingControl>
+
 
                         <StackLayout HorizontalOptions="Center"
                                          VerticalOptions="Center"
@@ -71,8 +72,7 @@
                                Style="{DynamicResource LabelHeaderStyle}"/>
                     </StackLayout>
 
-                    <controls:SettingsControl HorizontalOptions="End" 
-                                              ControlImage="user.png" HeightRequest="55"/>
+                    <controls:SettingControl VerticalOptions="Start" HorizontalOptions="End" ControlImage="user.png" ImageHeight="12"/>
                 </StackLayout>
 
                 <Frame BorderColor="#FF40444B"
@@ -272,8 +272,6 @@
                                         ThumbImageSource="smallthumb.png"  
                                         MaximumTrackColor="#FF0F1012"
                                         MinimumTrackColor="#FF0680D1"/>
-
-                                <!--<range:SfRangeSlider x:Name="rangeslider"  Minimum="1" HeightRequest="20" Maximum="5"   StepFrequency="1" VerticalOptions="Start"  Orientation="Horizontal" TickColor="Transparent" />-->
 
                             </StackLayout>
                         </StackLayout>

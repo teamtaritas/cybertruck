@@ -9,12 +9,12 @@
       x:Class="Cybertruck.Controls.SettingsControl"
       x:Name="ControlSettings"
       HorizontalOptions="Start"
-      VerticalOptions="Start"
+      VerticalOptions="Start" BackgroundColor="#FF32373d"
       Padding="20">
 
-    <abstractions:CircleImage FillColor="Transparent" BorderColor="DarkGray" BorderThickness="1" Opacity="0.6"/>
+    <!--<abstractions:CircleImage FillColor="Transparent" BorderColor="DarkGray" BorderThickness="1" Opacity="0.6"/>-->
 
-    <Frame Padding="0" Opacity="0.9"
+    <Frame Padding="0" Opacity="1"
            HasShadow="True" 
            BackgroundColor="Transparent"
            HeightRequest="60" 
@@ -27,7 +27,7 @@
                 <gradient:SfRadialGradientBrush>
                     <gradient:SfRadialGradientBrush.GradientStops>
                         <gradient:SfGradientStop Color="#FF212528" Offset="0.78" />
-                        <gradient:SfGradientStop Color="#FF1D1E22" Offset="0.8" />
+                        <gradient:SfGradientStop Color="#FF31353C" Offset="0.8" />
                         <gradient:SfGradientStop Color="#FF31353C" Offset="1.0" />
                         
                     </gradient:SfRadialGradientBrush.GradientStops>

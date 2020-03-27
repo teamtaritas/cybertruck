@@ -14,7 +14,7 @@
              x:Class="Cybertruck.Views.Page2">
     <ContentPage.Padding>
         <OnPlatform x:TypeArguments="Thickness" >
-            <On Platform="iOS" Value="0,5,0,0"/>
+            <On Platform="iOS" Value="0,10,0,0"/>
             <On Platform="Android" Value="0"/>
         </OnPlatform>
     </ContentPage.Padding>
@@ -324,7 +324,7 @@
             <magic:GradientView VerticalOptions="FillAndExpand">
                 <magic:GradientView.GradientSource>
                     <magic:LinearGradient>
-                        <magic:GradientStop Color="#FF31353C" Offset="0.45" />
+                        <magic:GradientStop Color="#FF32373d" Offset="0.45" />
                         <magic:GradientStop Color="#FF18181E" Offset="1" />
                     </magic:LinearGradient>
                 </magic:GradientView.GradientSource>
@@ -335,13 +335,13 @@
                      HorizontalOptions="FillAndExpand"
                      VerticalOptions="Start">
 
-                    <!--Replace this after haveing dual line image-->
                     <Grid>
-                        <controls:SettingsControl HorizontalOptions="End"  HeightRequest="55">
-                            <controls:SettingsControl.GestureRecognizers>
-                                <TapGestureRecognizer Tapped="GoBack"/>
-                            </controls:SettingsControl.GestureRecognizers>
-                        </controls:SettingsControl>
+                        <controls:SettingControl VerticalOptions="Start" HorizontalOptions="End">
+                            <controls:SettingControl.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="GoBack"/>
+                            </controls:SettingControl.GestureRecognizers>
+                        </controls:SettingControl>
+                        
                        
                         <StackLayout HorizontalOptions="Center"
                                          VerticalOptions="Center"
@@ -367,13 +367,11 @@
                                VerticalOptions="Center"
                                Style="{DynamicResource LabelHeaderStyle}"/>
                     </StackLayout>
-
-                    <controls:SettingsControl HorizontalOptions="End" 
-                                              ControlImage="user.png" 
-                                              HeightRequest="55"/>
+ 
+                    <controls:SettingControl VerticalOptions="Start" HorizontalOptions="End" ControlImage="user.png" ImageHeight="12"/>
                 </StackLayout>
 
-                <Image HeightRequest="200" Margin="0,18"
+                <Image HeightRequest="200" Margin="10,16,0,16"
                        Source="carfrontface.png"
                        Aspect="AspectFit"/>
 
@@ -487,7 +485,6 @@
                     </Grid>
 
                     <Grid>
-                        <!--Button in Background to show gradient frame color-->
                         <button:SfButton CornerRadius="45" BackgroundColor="Transparent">
                             <button:SfButton.BackgroundGradient>
                                 <gradient:SfLinearGradientBrush StartPoint="0.5, 0" EndPoint="0.5, 1">
@@ -500,7 +497,6 @@
                             </button:SfButton.BackgroundGradient>
                         </button:SfButton>
 
-                        <!--Main Frame-->
                         <Frame BorderColor="#FF40444B"
                                BackgroundColor="Transparent" 
                                CornerRadius="45"
@@ -520,18 +516,52 @@
                                          WidthRequest="45"/>
 
                                 <StackLayout VerticalOptions="Center">
-                                    <StackLayout.GestureRecognizers>
-                                        <TapGestureRecognizer Tapped="NavigateToPage3"/>
-                                    </StackLayout.GestureRecognizers>
+                                   
                                     <Label Text="A/C is ON"
                                            Style="{DynamicResource LabelLargeBoldStyle}"/>
 
                                     <Label Text="Tap to turn off or swipe up for a fast setup" 
                                            Style="{DynamicResource LabelMicroStyle}"/>
                                 </StackLayout>
-
-                                <controls:PowerbuttonControl Grid.Column="1"/>
+ 
+                                <Grid Grid.Column="1">
+                                    <Grid.GestureRecognizers>
+                                        <TapGestureRecognizer Tapped="NavigateToPage3"/>
+                                    </Grid.GestureRecognizers>
+                                    <Image Source="p1.png"  Aspect="AspectFill" WidthRequest="70" HeightRequest="75" Margin="10,10,0,0"  HorizontalOptions="Center" VerticalOptions="Center"/>
+                                    
+                                    <button:SfButton HorizontalOptions="Center"
+                                                     VerticalOptions="Center" BackgroundColor="Transparent"
+                                                     HeightRequest="65"
+                                                     WidthRequest="65" 
+                                                     Clicked="NavigateToPage3"
+                                                     CornerRadius="65" 
+                                                     IsEnabled="False"
+                                                     x:Name="ButtonControl"
+                                                     BorderColor="#FF0E9BED" 
+                                                     BorderWidth="2">
+                                        <gradient:SfGradientView>
+                                            <gradient:SfGradientView.BackgroundBrush>
+                                                <gradient:SfLinearGradientBrush>
+                                                    <gradient:SfLinearGradientBrush.GradientStops>
+                                                        <gradient:SfGradientStop Color="#FF0361A7"  
+                                                                                 x:Name="SfGradientStop1"                                               
+                                                                                 Offset="0.4" />
+                                                        <gradient:SfGradientStop Color="#FF0E9BED"        
+                                                                                 x:Name="SfGradientStop2"                                        
+                                                                                 Offset="1.0" />
+                                                    </gradient:SfLinearGradientBrush.GradientStops>
+                                                </gradient:SfLinearGradientBrush>
+                                            </gradient:SfGradientView.BackgroundBrush>
+                                        </gradient:SfGradientView>
+                                    </button:SfButton>
                                 
+                                    <Image Source="power.png"
+                                           HeightRequest="15" 
+                                           x:Name="image"
+                                           HorizontalOptions="Center" />
+                                </Grid>
+
                             </Grid>
                         </Frame>
                     </Grid>

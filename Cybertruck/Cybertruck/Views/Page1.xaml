@@ -15,27 +15,12 @@
             <On Platform="Android" Value="0"/>
         </OnPlatform>
     </ContentPage.Padding>
-    <!--<ContentPage.Resources>
-        <StyleSheet Source="/Stylesheet1.css" />
-    </ContentPage.Resources>-->
     <Grid>
-        <Grid x:Name="Grid720">
-            <!--<gradient:SfGradientView >
-            <gradient:SfGradientView.BackgroundBrush>
-                <gradient:SfLinearGradientBrush StartPoint="0.5, 0" EndPoint="0.5, 1">
-                    <gradient:SfLinearGradientBrush.GradientStops>
-                        <gradient:SfGradientStop Color="#FF31353C" Offset="0.0" />
-                        <gradient:SfGradientStop Color="#FF31353C" Offset="0.6" />
-                        <gradient:SfGradientStop Color="#FF18181E" Offset="1.0" />
-                    </gradient:SfLinearGradientBrush.GradientStops>
-                </gradient:SfLinearGradientBrush>
-            </gradient:SfGradientView.BackgroundBrush>
-        </gradient:SfGradientView>-->
-
+        <Grid x:Name="Grid1">
             <magic:GradientView VerticalOptions="FillAndExpand">
                 <magic:GradientView.GradientSource>
                     <magic:LinearGradient>
-                        <magic:GradientStop Color="#FF31353C" Offset="0.6" />
+                        <magic:GradientStop Color="#FF32373d" Offset="0.6" />
                         <magic:GradientStop Color="#FF18181E" Offset="1" />
                     </magic:LinearGradient>
                 </magic:GradientView.GradientSource>
@@ -49,11 +34,7 @@
                 </Grid.RowDefinitions>
 
                 <Grid Padding="0,5,0,0">
-                    <controls:SettingsControl ControlImage="gear.png" 
-                                          ImageHeight="17"
-                                          HorizontalOptions="End" 
-                                          HeightRequest="55"/>
-                    <!--55-->
+                    <controls:SettingControl VerticalOptions="Start" HorizontalOptions="End" ControlImage="gear.png"/>
 
                     <StackLayout VerticalOptions="End"
                              Padding="0,0,0,30"
@@ -190,23 +171,11 @@
 
         </Grid>
 
-        <Grid x:Name="Grid1080">
-            <!--<gradient:SfGradientView >
-            <gradient:SfGradientView.BackgroundBrush>
-                <gradient:SfLinearGradientBrush StartPoint="0.5, 0" EndPoint="0.5, 1">
-                    <gradient:SfLinearGradientBrush.GradientStops>
-                        <gradient:SfGradientStop Color="#FF31353C" Offset="0.0" />
-                        <gradient:SfGradientStop Color="#FF31353C" Offset="0.6" />
-                        <gradient:SfGradientStop Color="#FF18181E" Offset="1.0" />
-                    </gradient:SfLinearGradientBrush.GradientStops>
-                </gradient:SfLinearGradientBrush>
-            </gradient:SfGradientView.BackgroundBrush>
-        </gradient:SfGradientView>-->
-
+        <Grid x:Name="Grid2">
             <magic:GradientView VerticalOptions="FillAndExpand">
                 <magic:GradientView.GradientSource>
                     <magic:LinearGradient>
-                        <magic:GradientStop Color="#FF31353C" Offset="0.6" />
+                        <magic:GradientStop Color="#FF32373d" Offset="0.6" />
                         <magic:GradientStop Color="#FF18181E" Offset="1" />
                     </magic:LinearGradient>
                 </magic:GradientView.GradientSource>
@@ -220,12 +189,9 @@
                         <RowDefinition Height="*"/>
                     </Grid.RowDefinitions>
 
-                    <Grid Padding="0,10,0,0">
-                        <controls:SettingsControl ControlImage="gear.png" 
-                                          ImageHeight="17"
-                                          HorizontalOptions="End" 
-                                          HeightRequest="55"/>
-
+                    <Grid Padding="0,5,0,0">
+                        <controls:SettingControl VerticalOptions="Start" HorizontalOptions="End" ControlImage="gear.png"/>
+                        
                         <StackLayout VerticalOptions="End"
                              Padding="0,0,0,30"
                              Spacing="-10">

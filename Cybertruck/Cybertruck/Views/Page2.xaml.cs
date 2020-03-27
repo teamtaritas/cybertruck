@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -35,9 +36,18 @@ namespace Cybertruck.Views
             Navigation.PopModalAsync();
         }
 
-        private void NavigateToPage3(object sender, EventArgs e)
+        private async void NavigateToPage3(object sender, EventArgs e)
         {
-            Navigation.PushModalAsync(new Page3());
+            image.Source = "powerDarkGray.png";
+            ButtonControl.BorderColor = Color.FromHex("#FF1B2024");
+            SfGradientStop1.Color = Color.FromHex("#FF2B3034");
+            SfGradientStop2.Color = Color.FromHex("#FF212528");
+            await Task.Delay(50);
+            image.Source = "power.png";
+            ButtonControl.BorderColor = Color.FromHex("#FF0E9BED");
+            SfGradientStop1.Color = Color.FromHex("#FF0361A7");
+            SfGradientStop2.Color = Color.FromHex("#FF0E9BED");
+            await Navigation.PushModalAsync(new Page3());
         }
     }
 }
