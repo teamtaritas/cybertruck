@@ -48,7 +48,7 @@ namespace Cybertruck.Views
             ButtonControl.BorderColor = Color.FromHex("#FF0E9BED");
             SfGradientStop1.Color = Color.FromHex("#FF0361A7");
             SfGradientStop2.Color = Color.FromHex("#FF0E9BED");
-            
+
             await PushModelNextPage(new Page3());
         }
     }

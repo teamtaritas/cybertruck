@@ -6,18 +6,21 @@
       xmlns:button="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
       xmlns:gradient="clr-namespace:Syncfusion.XForms.Graphics;assembly=Syncfusion.Core.XForms"
       mc:Ignorable="d" 
+      x:Name="ControlPowerbutton"
       x:Class="Cybertruck.Controls.PowerbuttonControl" 
       Padding="0" >
     <Grid.GestureRecognizers>
         <TapGestureRecognizer Tapped="ButtonTapped"/>
     </Grid.GestureRecognizers>
-    <Image Source="p1.png"  Aspect="AspectFill" WidthRequest="75" HeightRequest="75" Margin="10,10,0,0"  HorizontalOptions="Center" VerticalOptions="Center"/>
+    <Image Source="p1.png"  Aspect="AspectFill" WidthRequest="75" HeightRequest="75" Margin="10,10,0,0"/>
 
     <button:SfButton HorizontalOptions="Center"
                      VerticalOptions="Center" BackgroundColor="Transparent"
-                     HeightRequest="65"
-                     WidthRequest="65" Clicked="ButtonTapped"
-                     CornerRadius="65" IsEnabled="False"
+                     HeightRequest="{Binding Source={x:Reference ControlPowerbutton}, Path=Height}"
+                     WidthRequest="{Binding Source={x:Reference ButtonControl}, Path=Height}"
+                     Clicked="ButtonTapped"
+                     CornerRadius="{Binding Source={x:Reference ControlPowerbutton}, Path=Height}" 
+                     IsEnabled="False"
                      x:Name="ButtonControl"
                      BorderColor="#FF0E9BED" 
                      BorderWidth="2">

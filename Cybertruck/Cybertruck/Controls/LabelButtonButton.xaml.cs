@@ -4,7 +4,7 @@ using Xamarin.Forms.Xaml;
 namespace Cybertruck.Controls
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class LabelButtonButton : StackLayout
+    public partial class LabelButtonButton : Grid
     {
         public static readonly BindableProperty ONProperty = BindableProperty.Create(nameof(ON), typeof(bool), typeof(LabelButtonButton), false);
         public bool ON

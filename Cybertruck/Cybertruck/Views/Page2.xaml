@@ -22,85 +22,45 @@
     </abstraction:BaseContentPage.Padding>
     <ContentPage.Resources>
 
-        <!--#region Styles -->
-        
-        <Style x:Key="LabelLargeBoldStyle" TargetType="Label">
-            <!--A/C is ON-->
-            <Setter Property="FontSize" Value="18" />
-            <Setter Property="TextColor" Value="White" />
-            <Setter Property="FontAttributes" Value="Bold" />
-        </Style>
-
-        <Style x:Key="LabelTitleStyle" TargetType="Label">
-            <!--Cybertruck, Status, information, Navigation-->
-            <Setter Property="FontSize">
-                <Setter.Value>
-                    <OnPlatform x:TypeArguments="x:Double" >
-                        <On Platform="iOS" Value="17"/>
-                        <On Platform="Android" Value="17"/>
-                    </OnPlatform>
-                </Setter.Value>
-            </Setter>
-            <Setter Property="TextColor" Value="White" />
-            <Setter Property="FontAttributes" Value="Bold" />
-        </Style>
-
-        <Style x:Key="LabelHeaderStyle" TargetType="Label">
-            <!--Cybertruck, Status, information, Navigation-->
-            <Setter Property="FontSize" Value="15" >
-                <Setter.Value>
-                    <OnPlatform x:TypeArguments="x:Double" >
-                        <On Platform="iOS" Value="15"/>
-                        <On Platform="Android" Value="15"/>
-                    </OnPlatform>
-                </Setter.Value>
-            </Setter>
-            <Setter Property="TextColor" Value="White" />
-            <Setter Property="FontAttributes" Value="Bold" />
-        </Style>
-
-        <Style x:Key="LabelSmallStyle" TargetType="Label">
-            <!--54%, 297 Km, 27'C  -->
-            <Setter Property="FontSize" Value="14" />
-            <Setter Property="TextColor" Value="White" />
-            <Setter Property="FontAttributes" Value="Bold" />
-            <!--<Setter Property="FontFamily" Value="{DynamicResource SolomanSansLight}"/>-->
-        </Style>
-
-        <Style x:Key="LabelMicroStyle" TargetType="Label">
-            <!--Tesla, Battery, Range, Temperatue-->
-            <Setter Property="FontSize" Value="13" />
-            <Setter Property="TextColor" Value="DarkGray" />
-            <!--Gray-->
-        </Style>
-
-        <!--#endregion-->
-
         <!--#region Templates -->
         <DataTemplate x:Key="EngineInfoTemplate">
-            <Grid>
-                <Image Margin="28,18,0,0" 
+            
+            <Grid x:Name="MainGridInfoTemplate1" Margin="0,-5,0,0">
+
+                <!--<Image Margin="28,5,-10,-5" 
                        HorizontalOptions="Center" 
                        VerticalOptions="Center"  
                        Source="s6" 
-                       HeightRequest="140" 
-                       WidthRequest="140" 
-                       Aspect="AspectFit" />
+                       HeightRequest="{Binding Source={x:Reference MainGridInfoTemplate1}, Path=Height, Converter={StaticResource AddHeightConverter}, ConverterParameter=15}"
+                       WidthRequest="{Binding Source={x:Reference MainGridInfoTemplate1}, Path=Height, Converter={StaticResource AddHeightConverter}, ConverterParameter=15}"     
+                       Aspect="AspectFit" />-->
 
-                <Frame HeightRequest="120" 
+                <Frame HeightRequest="{Binding Source={x:Reference MainGridInfoTemplate1}, Path=Height, Converter={StaticResource SubstractHeightConverter}, ConverterParameter=20}" 
+                       WidthRequest="{Binding Source={x:Reference MainGridInfoTemplate1}, Path=Height, Converter={StaticResource SubstractHeightConverter}, ConverterParameter=25}"    
                        HasShadow="True"   
-                       WidthRequest="115"    
-                       BackgroundColor="#FF1B1F22"   
+                       BackgroundColor="#FF1B1F22"  
+                       Opacity="0.5"
                        Padding="0" 
+                       IsClippedToBounds="True"
+                       CornerRadius="8" 
+                       Margin="8,8,0,0"
+                       HorizontalOptions="Center"  
+                       VerticalOptions="Center"/>
+
+                <Frame HeightRequest="{Binding Source={x:Reference MainGridInfoTemplate1}, Path=Height, Converter={StaticResource SubstractHeightConverter}, ConverterParameter=20}" 
+                       WidthRequest="{Binding Source={x:Reference MainGridInfoTemplate1}, Path=Height, Converter={StaticResource SubstractHeightConverter}, ConverterParameter=25}"    
+                       HasShadow="True"   
+                       BackgroundColor="#FF1B1F22"   
+                       Padding="0" x:Name="FrameTemplate1"
                        IsClippedToBounds="True"
                        CornerRadius="8"
                        HorizontalOptions="Center"  
                        VerticalOptions="Center">
                     <Grid>
                         <Grid IsClippedToBounds="True">
-                            <button:SfButton CornerRadius="150" 
-                                            HeightRequest="150" 
-                                            WidthRequest="150" 
+                            <button:SfButton CornerRadius="{Binding Source={x:Reference MainGridInfoTemplate1}, Path=Height, Converter={StaticResource AddHeightConverter}, ConverterParameter=10}" 
+                                            HeightRequest="{Binding Source={x:Reference MainGridInfoTemplate1}, Path=Height, Converter={StaticResource AddHeightConverter}, ConverterParameter=10}" 
+                       WidthRequest="{Binding Source={x:Reference MainGridInfoTemplate1}, Path=Height, Converter={StaticResource AddHeightConverter}, ConverterParameter=10}" 
                                             IsEnabled="False"
                                             BackgroundColor="Transparent"
                                             HorizontalOptions="Center"
@@ -119,9 +79,9 @@
                                 </button:SfButton.BackgroundGradient>
                             </button:SfButton>
 
-                            <button:SfButton CornerRadius="100" 
-                                            HeightRequest="100" 
-                                            WidthRequest="100" 
+                            <button:SfButton HeightRequest="{Binding Source={x:Reference MainGridInfoTemplate1}, Path=Height, Converter={StaticResource SubstractHeightConverter}, ConverterParameter=40}" 
+                       WidthRequest="{Binding Source={x:Reference MainGridInfoTemplate1}, Path=Height, Converter={StaticResource SubstractHeightConverter}, ConverterParameter=40}"    
+                                              CornerRadius="{Binding Source={x:Reference MainGridInfoTemplate1}, Path=Height, Converter={StaticResource SubstractHeightConverter}, ConverterParameter=40}"    
                                             BackgroundColor="Transparent"
                                             IsEnabled="False"
                                             HorizontalOptions="Center" 
@@ -143,29 +103,41 @@
                                      Margin="10"
                                      HorizontalOptions="Fill"
                                      VerticalOptions="End">
-                            <Label Text="{Binding Header}"
+                            <Label Text="{Binding Header}"  
                                    Style="{DynamicResource LabelSmallStyle}"/>
                             <Label Text="{Binding Detail}" 
                                    Style="{DynamicResource LabelMicroStyle}"/>
                         </StackLayout>
                     </Grid>
                 </Frame>
+
             </Grid>
         </DataTemplate>
 
         <DataTemplate x:Key="ClimateInfoTemplate">
-            <Grid>
-                <Image Margin="28,18,0,0" 
+            <Grid x:Name="MainGridInfoTemplate2" Margin="0,-5,0,0">
+                <!--<Image Margin="28,5,-10,-5" 
                        HorizontalOptions="Center" 
                        VerticalOptions="Center"  
                        Source="s6" 
-                       HeightRequest="140" 
-                       WidthRequest="140" 
-                       Aspect="AspectFit" />
- 
-                <Frame HeightRequest="120" 
+                       HeightRequest="{Binding Source={x:Reference MainGridInfoTemplate2}, Path=Height, Converter={StaticResource AddHeightConverter}, ConverterParameter=15}"
+                       WidthRequest="{Binding Source={x:Reference MainGridInfoTemplate2}, Path=Height, Converter={StaticResource AddHeightConverter}, ConverterParameter=15}"     
+                       Aspect="AspectFit" />-->
+
+                <Frame HeightRequest="{Binding Source={x:Reference MainGridInfoTemplate2}, Path=Height, Converter={StaticResource SubstractHeightConverter}, ConverterParameter=20}" 
+                       WidthRequest="{Binding Source={x:Reference MainGridInfoTemplate2}, Path=Height, Converter={StaticResource SubstractHeightConverter}, ConverterParameter=25}"    
                        HasShadow="True"   
-                       WidthRequest="115"    
+                       BackgroundColor="#FF1B1F22"  
+                       Opacity="0.5"
+                       Padding="0" 
+                       IsClippedToBounds="True"
+                       CornerRadius="8"  Margin="8,8,0,0"
+                       HorizontalOptions="Center"  
+                       VerticalOptions="Center"/>
+                
+                <Frame HeightRequest="{Binding Source={x:Reference MainGridInfoTemplate2}, Path=Height, Converter={StaticResource SubstractHeightConverter}, ConverterParameter=20}" 
+                       WidthRequest="{Binding Source={x:Reference MainGridInfoTemplate2}, Path=Height, Converter={StaticResource SubstractHeightConverter}, ConverterParameter=25}"     
+                       HasShadow="True"   
                        BackgroundColor="#FF1B1F22"   
                        Padding="0" 
                        IsClippedToBounds="True"
@@ -175,8 +147,8 @@
                     <Grid>
 
                         <Grid IsClippedToBounds="True">
-                            <button:SfButton HeightRequest="150" 
-                                         WidthRequest="150" 
+                            <button:SfButton HeightRequest="{Binding Source={x:Reference MainGridInfoTemplate2}, Path=Height, Converter={StaticResource AddHeightConverter}, ConverterParameter=10}" 
+                       WidthRequest="{Binding Source={x:Reference MainGridInfoTemplate2}, Path=Height, Converter={StaticResource AddHeightConverter}, ConverterParameter=10}" 
                                          IsEnabled="False"
                                          BackgroundColor="Transparent"
                                          HorizontalOptions="Center"
@@ -195,8 +167,8 @@
                                 </button:SfButton.BackgroundGradient>
                             </button:SfButton>
 
-                            <button:SfButton HeightRequest="100" 
-                                         WidthRequest="90"  
+                            <button:SfButton HeightRequest="{Binding Source={x:Reference MainGridInfoTemplate2}, Path=Height, Converter={StaticResource SubstractHeightConverter}, ConverterParameter=40}" 
+                       WidthRequest="{Binding Source={x:Reference MainGridInfoTemplate2}, Path=Height, Converter={StaticResource SubstractHeightConverter}, ConverterParameter=40}"      
                                          BackgroundColor="Transparent"
                                          IsEnabled="False"
                                          HorizontalOptions="Center" 
@@ -234,18 +206,29 @@
         </DataTemplate>
 
         <DataTemplate x:Key="TiresInfoTemplate">
-            <Grid>
-                <Image Margin="28,18,0,0" 
+            <Grid x:Name="MainGridInfoTemplate3" Margin="0,-5,0,0">
+                <!--<Image Margin="28,5,-10,-5" 
                        HorizontalOptions="Center" 
                        VerticalOptions="Center"  
                        Source="s6" 
-                       HeightRequest="140" 
-                       WidthRequest="140" 
-                       Aspect="AspectFit" />
+                       HeightRequest="{Binding Source={x:Reference MainGridInfoTemplate3}, Path=Height, Converter={StaticResource AddHeightConverter}, ConverterParameter=15}"
+                       WidthRequest="{Binding Source={x:Reference MainGridInfoTemplate3}, Path=Height, Converter={StaticResource AddHeightConverter}, ConverterParameter=15}"     
+                       Aspect="AspectFit" />-->
 
-                <Frame HeightRequest="120" 
+                <Frame HeightRequest="{Binding Source={x:Reference MainGridInfoTemplate3}, Path=Height, Converter={StaticResource SubstractHeightConverter}, ConverterParameter=20}" 
+                       WidthRequest="{Binding Source={x:Reference MainGridInfoTemplate3}, Path=Height, Converter={StaticResource SubstractHeightConverter}, ConverterParameter=25}"    
                        HasShadow="True"   
-                       WidthRequest="115"    
+                       BackgroundColor="#FF1B1F22"  
+                       Opacity="0.5"
+                       Padding="0" 
+                       IsClippedToBounds="True"
+                       CornerRadius="8"  Margin="8,8,0,0"
+                       HorizontalOptions="Center"  
+                       VerticalOptions="Center"/>
+                
+                <Frame HeightRequest="{Binding Source={x:Reference MainGridInfoTemplate3}, Path=Height, Converter={StaticResource SubstractHeightConverter}, ConverterParameter=20}" 
+                       WidthRequest="{Binding Source={x:Reference MainGridInfoTemplate3}, Path=Height, Converter={StaticResource SubstractHeightConverter}, ConverterParameter=25}"    
+                       HasShadow="True"   
                        BackgroundColor="#FF1B1F22"   
                        Padding="0" 
                        CornerRadius="8" 
@@ -254,8 +237,8 @@
                        VerticalOptions="Center">
                     <Grid>
                         <Grid IsClippedToBounds="True">
-                            <button:SfButton HeightRequest="150" 
-                                         WidthRequest="150" 
+                            <button:SfButton HeightRequest="{Binding Source={x:Reference MainGridInfoTemplate3}, Path=Height, Converter={StaticResource AddHeightConverter}, ConverterParameter=10}" 
+                       WidthRequest="{Binding Source={x:Reference MainGridInfoTemplate3}, Path=Height, Converter={StaticResource AddHeightConverter}, ConverterParameter=10}" 
                                          IsEnabled="False"
                                          BackgroundColor="Transparent"
                                          HorizontalOptions="Center"
@@ -274,8 +257,9 @@
                                 </button:SfButton.BackgroundGradient>
                             </button:SfButton>
 
-                            <button:SfButton HeightRequest="100" 
-                                         WidthRequest="90"  
+                            <button:SfButton HeightRequest="{Binding Source={x:Reference MainGridInfoTemplate3}, Path=Height, Converter={StaticResource SubstractHeightConverter}, ConverterParameter=40}" 
+                       WidthRequest="{Binding Source={x:Reference MainGridInfoTemplate3}, Path=Height, Converter={StaticResource SubstractHeightConverter}, ConverterParameter=40}"    
+                                             
                                          BackgroundColor="Transparent"
                                          IsEnabled="False"
                                          HorizontalOptions="Center" 
@@ -295,7 +279,7 @@
                             </button:SfButton>
                         </Grid>
 
-                        <abstractions:CircleImage HeightRequest="3" TranslationX="15" TranslationY="15" WidthRequest="3"                             FillColor="#FF0E9BED" HorizontalOptions="Start" VerticalOptions="Start"/>
+                        <abstractions:CircleImage HeightRequest="3" TranslationX="15" TranslationY="15" WidthRequest="3" FillColor="#FF0E9BED" HorizontalOptions="Start" VerticalOptions="Start"/>
 
                         <StackLayout Spacing="3"
                                      Margin="10"
@@ -321,65 +305,71 @@
 
     </ContentPage.Resources>
 
-    <ScrollView>
-        <Grid>
-            <magic:GradientView VerticalOptions="FillAndExpand">
-                <magic:GradientView.GradientSource>
-                    <magic:LinearGradient>
-                        <magic:GradientStop Color="#FF32373d" Offset="0.45" />
-                        <magic:GradientStop Color="#FF18181E" Offset="1" />
-                    </magic:LinearGradient>
-                </magic:GradientView.GradientSource>
-            </magic:GradientView>
-            <StackLayout Spacing="0">
+    <Grid>
+        <magic:GradientView VerticalOptions="FillAndExpand">
+            <magic:GradientView.GradientSource>
+                <magic:LinearGradient>
+                    <magic:GradientStop Color="#FF32373d" Offset="0.45" />
+                    <magic:GradientStop Color="#FF18181E" Offset="1" />
+                </magic:LinearGradient>
+            </magic:GradientView.GradientSource>
+        </magic:GradientView>
+        <Grid RowSpacing="20">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="0.5*"/>
+                <RowDefinition Height=".8*"/>
+                <RowDefinition Height=".6*"/>
+                <RowDefinition Height=".9*"/>
+                <RowDefinition Height=".8*"/>
+            </Grid.RowDefinitions>
 
-                <StackLayout Orientation="Horizontal"  
-                     HorizontalOptions="FillAndExpand"
-                     VerticalOptions="Start">
+            <Grid BackgroundColor="Transparent">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
 
-                    <Grid>
-                        <controls:SettingControl VerticalOptions="Start" HorizontalOptions="End">
-                            <controls:SettingControl.GestureRecognizers>
-                            <TapGestureRecognizer Tapped="GoBack"/>
-                            </controls:SettingControl.GestureRecognizers>
-                        </controls:SettingControl>
-                        
-                       
-                        <StackLayout HorizontalOptions="Center"
+                <Grid>
+                    <controls:SettingControl VerticalOptions="Center" HorizontalOptions="Center"/>
+
+                    <StackLayout HorizontalOptions="Center"
                                          VerticalOptions="Center"
                                          Spacing="4">
-                            <BoxView WidthRequest="12" HorizontalOptions="Center" VerticalOptions="Center"
+                        <BoxView WidthRequest="12" HorizontalOptions="Center" VerticalOptions="Center"
                                      Color="White"
                                      HeightRequest="1"/>
-                            <BoxView WidthRequest="7" HorizontalOptions="Start" VerticalOptions="Center"
+                        <BoxView WidthRequest="7" HorizontalOptions="Start" VerticalOptions="Center"
                                      Color="White"
                                      HeightRequest="1"/>
-                        </StackLayout>
-                    </Grid>
+                    </StackLayout>
+                </Grid>
 
-                    <StackLayout Spacing="0"
+                <StackLayout Grid.Column="1" Spacing="0"
                                  HorizontalOptions="FillAndExpand"
                                  VerticalOptions="Center">
-                        <Label Text="Tesla"
+                    <Label Text="Tesla"
                                HorizontalOptions="Center"
                                VerticalOptions="Center"
                                Style="{DynamicResource LabelMicroStyle}"/>
-                        <Label Text="Cybertruck" 
+                    <Label Text="Cybertruck" 
                                HorizontalOptions="Center"
                                VerticalOptions="Center"
-                               Style="{DynamicResource LabelHeaderStyle}"/>
-                    </StackLayout>
- 
-                    <controls:SettingControl VerticalOptions="Start" HorizontalOptions="End" ControlImage="user.png" ImageHeight="12"/>
+                               Style="{DynamicResource LabelSmallStyle}"/>
                 </StackLayout>
 
-                <Image HeightRequest="200" Margin="10,16,0,16"
-                       Source="carfrontface.png"
-                       Aspect="AspectFit"/>
+                <controls:SettingControl Grid.Column="2" VerticalOptions="Center" HorizontalOptions="Center" ControlImage="user.png" ImageHeight="12"/>
+            </Grid>
 
+            <Grid BackgroundColor="Transparent" Grid.Row="1" VerticalOptions="Center" Margin="-20" IsClippedToBounds="True">
+                <Image Source="carfrontface.png"
+                       Aspect="AspectFit"/>
+            </Grid>
+
+            <Grid BackgroundColor="Transparent" Grid.Row="2" VerticalOptions="Center">
                 <StackLayout Margin="30,0"
-                             Spacing="20">
-                    <Label Text="Status"
+                             Spacing="5">
+                    <Label Text="Status"  
                            Style="{DynamicResource LabelTitleStyle}"/>
 
                     <StackLayout Orientation="Horizontal"
@@ -450,66 +440,76 @@
 
                     </StackLayout>
                 </StackLayout>
+            </Grid>
 
-                <StackLayout Margin="10,35,10,25" 
-                             Spacing="5">
-                    <Label Text="Information"
-                           Margin="20,0,0,0"
+            <Grid Grid.Row="3"  
+                  Margin="10,-10,10,5" 
+                  RowSpacing="5">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <Label Text="Information"  
+                           Margin="20,0,0,0" 
                            Style="{DynamicResource LabelTitleStyle}"/>
 
-                    <ScrollView Orientation="Horizontal"
+                    <ScrollView Orientation="Horizontal" Grid.Row="1"
                                 HorizontalScrollBarVisibility="Never">
                         <StackLayout Orientation="Horizontal"
-                                     Margin="-5,0"
+                                     Margin="20,0,0,0"
                                      BindableLayout.ItemsSource="{Binding Informations}"
                                      BindableLayout.ItemTemplateSelector="{StaticResource InfoItemTemplateSelector}"
-                                     Spacing="-20">
+                                     Spacing="20">
                         </StackLayout>
                     </ScrollView>
-                </StackLayout>
+            </Grid>
 
-                <StackLayout Spacing="20">
-                    <Grid HorizontalOptions="FillAndExpand" Margin="30,0">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="*"/>
-                            <ColumnDefinition Width="*"/>
-                        </Grid.ColumnDefinitions>
-                        <Label Text="Navigation"
+            <Grid BackgroundColor="Transparent" Grid.Row="4"  RowSpacing="10">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+
+                <Grid HorizontalOptions="FillAndExpand" Margin="30,0" >
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Label Text="Navigation"  
                                VerticalOptions="End"
                                Style="{DynamicResource LabelTitleStyle}"/>
 
-                        <Label Grid.Column="1" 
+                    <Label Grid.Column="1" 
                                Text="History"
                                TextColor="White"
                                VerticalOptions="End"
                                HorizontalOptions="End"
-                               FontSize="14"/>
-                    </Grid>
+                               Style="{DynamicResource LabelMicroStyle}"/>
+                </Grid>
 
-                    <Grid>
-                        <button:SfButton CornerRadius="45" BackgroundColor="Transparent">
-                            <button:SfButton.BackgroundGradient>
-                                <gradient:SfLinearGradientBrush StartPoint="0.5, 0" EndPoint="0.5, 1">
-                                    <gradient:SfLinearGradientBrush.GradientStops>
-                                        <gradient:SfGradientStop Color="#FF23262A" Offset="0.0" />
-                                        <gradient:SfGradientStop Color="#FF23262A" Offset="0.5" />
-                                        <gradient:SfGradientStop Color="#FF18181E" Offset="1.0" />
-                                    </gradient:SfLinearGradientBrush.GradientStops>
-                                </gradient:SfLinearGradientBrush>
-                            </button:SfButton.BackgroundGradient>
-                        </button:SfButton>
+                <Grid Grid.Row="1" x:Name="GridPowerbuttonFrame">
+                    <button:SfButton  CornerRadius="45"  BackgroundColor="Transparent">
+                        <button:SfButton.BackgroundGradient>
+                            <gradient:SfLinearGradientBrush StartPoint="0.5, 0" EndPoint="0.5, 1">
+                                <gradient:SfLinearGradientBrush.GradientStops>
+                                    <gradient:SfGradientStop Color="#FF23262A" Offset="0.0" />
+                                    <gradient:SfGradientStop Color="#FF23262A" Offset="0.5" />
+                                    <gradient:SfGradientStop Color="#FF18181E" Offset="1.0" />
+                                </gradient:SfLinearGradientBrush.GradientStops>
+                            </gradient:SfLinearGradientBrush>
+                        </button:SfButton.BackgroundGradient>
+                    </button:SfButton>
 
-                        <Frame BorderColor="#FF40444B"
+                    <Frame BorderColor="#FF40444B"  x:Name="FramePower"
                                BackgroundColor="Transparent" 
-                               CornerRadius="45"
-                               Padding="27,20"
-                               HeightRequest="75">
-                            <Grid ColumnSpacing="100">
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="*"/>
-                                    <ColumnDefinition Width="Auto"/>
-                                </Grid.ColumnDefinitions>
-                                <BoxView BackgroundColor="#FF15161A"
+                                CornerRadius="45" Margin="-1,0"
+                               Padding="27,20">
+                        <Grid ColumnSpacing="80">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="Auto"/>
+                            </Grid.ColumnDefinitions>
+                            <BoxView BackgroundColor="#FF15161A"
                                          Margin="0,-5,0,0"
                                          Grid.ColumnSpan="2"
                                          VerticalOptions="Start"
@@ -517,59 +517,59 @@
                                          HeightRequest="3.5"
                                          WidthRequest="45"/>
 
-                                <StackLayout VerticalOptions="Center">
-                                   
-                                    <Label Text="A/C is ON"
-                                           Style="{DynamicResource LabelLargeBoldStyle}"/>
+                            <StackLayout VerticalOptions="Center" Spacing="0">
+                                <Label Text="A/C is ON" Style="{DynamicResource LabelLargeBoldStyle}"/>
+                                <Label Text="Tap to turn off or swipe up for a fast setup" Style="{DynamicResource LabelMicroStyle}"/>
+                            </StackLayout>
 
-                                    <Label Text="Tap to turn off or swipe up for a fast setup" 
-                                           Style="{DynamicResource LabelMicroStyle}"/>
-                                </StackLayout>
- 
-                                <Grid Grid.Column="1">
-                                    <Grid.GestureRecognizers>
-                                        <TapGestureRecognizer Tapped="NavigateToPage3"/>
-                                    </Grid.GestureRecognizers>
-                                    <Image Source="p1.png"  Aspect="AspectFill" WidthRequest="70" HeightRequest="75" Margin="10,10,0,0"  HorizontalOptions="Center" VerticalOptions="Center"/>
-                                    
-                                    <button:SfButton HorizontalOptions="Center"
+                            <!--<controls:PowerbuttonControl Grid.Column="1"  HorizontalOptions="End">
+                                <controls:PowerbuttonControl.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="NavigateToPage3"/>
+                                </controls:PowerbuttonControl.GestureRecognizers>
+                            </controls:PowerbuttonControl>-->
+                            <Grid Grid.Column="1" 
+                                  x:Name="GridPowerButton">
+                                <Grid.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="NavigateToPage3"/>
+                                </Grid.GestureRecognizers>
+                                <Image Source="p1.png"  Aspect="AspectFill" WidthRequest="{Binding Source={x:Reference GridPowerButton}, Path=Height}" HeightRequest="{Binding Source={x:Reference GridPowerButton}, Path=Height}" Margin="10,10,0,0"  HorizontalOptions="Center" VerticalOptions="Center"/>
+
+                                <button:SfButton HorizontalOptions="Center"  
                                                      VerticalOptions="Center" BackgroundColor="Transparent"
-                                                     HeightRequest="65"
-                                                     WidthRequest="65" 
+                                                     HeightRequest="{Binding Source={x:Reference GridPowerbuttonFrame}, Path=Height}" 
+                                                     WidthRequest="{Binding Source={x:Reference ButtonControl}, Path=Height }" 
+                                                     CornerRadius="{Binding Source={x:Reference ButtonControl}, Path=Height }" 
                                                      Clicked="NavigateToPage3"
-                                                     CornerRadius="65" 
                                                      IsEnabled="False"
                                                      x:Name="ButtonControl"
                                                      BorderColor="#FF0E9BED" 
                                                      BorderWidth="2">
-                                        <gradient:SfGradientView>
-                                            <gradient:SfGradientView.BackgroundBrush>
-                                                <gradient:SfLinearGradientBrush>
-                                                    <gradient:SfLinearGradientBrush.GradientStops>
-                                                        <gradient:SfGradientStop Color="#FF0361A7"  
+                                    <gradient:SfGradientView>
+                                        <gradient:SfGradientView.BackgroundBrush>
+                                            <gradient:SfLinearGradientBrush>
+                                                <gradient:SfLinearGradientBrush.GradientStops>
+                                                    <gradient:SfGradientStop Color="#FF0361A7"  
                                                                                  x:Name="SfGradientStop1"                                               
                                                                                  Offset="0.4" />
-                                                        <gradient:SfGradientStop Color="#FF0E9BED"        
+                                                    <gradient:SfGradientStop Color="#FF0E9BED"        
                                                                                  x:Name="SfGradientStop2"                                        
                                                                                  Offset="1.0" />
-                                                    </gradient:SfLinearGradientBrush.GradientStops>
-                                                </gradient:SfLinearGradientBrush>
-                                            </gradient:SfGradientView.BackgroundBrush>
-                                        </gradient:SfGradientView>
-                                    </button:SfButton>
-                                
-                                    <Image Source="power.png"
+                                                </gradient:SfLinearGradientBrush.GradientStops>
+                                            </gradient:SfLinearGradientBrush>
+                                        </gradient:SfGradientView.BackgroundBrush>
+                                    </gradient:SfGradientView>
+                                </button:SfButton>
+
+                                <Image Source="power.png"
                                            HeightRequest="15" 
                                            x:Name="image"
                                            HorizontalOptions="Center" />
-                                </Grid>
-
                             </Grid>
-                        </Frame>
-                    </Grid>
-                </StackLayout>
-            </StackLayout>
-        </Grid>
-    </ScrollView>
 
+                        </Grid>
+                    </Frame>
+                </Grid>
+            </Grid>
+        </Grid>
+    </Grid>
 </abstraction:BaseContentPage>

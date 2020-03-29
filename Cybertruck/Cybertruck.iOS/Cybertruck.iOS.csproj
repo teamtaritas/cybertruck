@@ -73,6 +73,7 @@
     <BundleResource Include="Resources\ionicons.ttf" />
     <BundleResource Include="Resources\Solomon Sans Light.ttf" />
     <BundleResource Include="Resources\SolomonSansLight.otf" />
+    <BundleResource Include="Resources\Montserrat-ExtraBold.ttf" />
   </ItemGroup>
   <ItemGroup>
     <InterfaceDefinition Include="Resources\LaunchScreen.storyboard" />

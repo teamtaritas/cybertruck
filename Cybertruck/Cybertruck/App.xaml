@@ -9,11 +9,13 @@
     <Application.Resources>
 
         <converters:SelfVisibilityConverter x:Key="SelfVisibilityConverter"/>
+        <converters:SubstractHeightConverter x:Key="SubstractHeightConverter"/>
+        <converters:AddHeightConverter x:Key="AddHeightConverter"/>
 
         <!--#region Styles -->
         <Style x:Key="LabelLargeBoldStyle" TargetType="Label">
             <!--A/C is ON-->
-            <Setter Property="FontSize" Value="18" />
+            <Setter Property="FontSize" Value="Medium" />
             <Setter Property="TextColor" Value="White" />
             <Setter Property="FontAttributes" Value="Bold" />
         </Style>
@@ -34,21 +36,22 @@
 
         <Style x:Key="LabelHeaderStyle" TargetType="Label">
             <!--Cybertruck, Status, information, Navigation-->
-            <Setter Property="FontSize" Value="15" >
+            <!--<Setter Property="FontSize">
                 <Setter.Value>
                     <OnPlatform x:TypeArguments="x:Double" >
                         <On Platform="iOS" Value="15"/>
-                        <On Platform="Android" Value="15"/>
+                        <On Platform="Android" Value="Subtitle"/>
                     </OnPlatform>
                 </Setter.Value>
-            </Setter>
+            </Setter>-->
+            <Setter Property="FontSize" Value="Subtitle" />
             <Setter Property="TextColor" Value="White" />
             <Setter Property="FontAttributes" Value="Bold" />
         </Style>
 
         <Style x:Key="LabelSmallStyle" TargetType="Label">
             <!--54%, 297 Km, 27'C  -->
-            <Setter Property="FontSize" Value="14" />
+            <Setter Property="FontSize" Value="Small" />
             <Setter Property="TextColor" Value="White" />
             <Setter Property="FontAttributes" Value="Bold" />
             <!--<Setter Property="FontFamily" Value="{DynamicResource SolomanSansLight}"/>-->
@@ -56,7 +59,7 @@
 
         <Style x:Key="LabelMicroStyle" TargetType="Label">
             <!--Tesla, Battery, Range, Temperatue-->
-            <Setter Property="FontSize" Value="13" />
+            <Setter Property="FontSize" Value="Small" />
             <Setter Property="TextColor" Value="#FFA9A9A9" />
             <!--DarkGray-->
         </Style>
@@ -67,7 +70,6 @@
             <On Platform="iOS" Value="Calibri Regular" />
         </OnPlatform>
 
-
         <OnPlatform x:TypeArguments="x:String" x:Key="SolomanSansLight">
             <On Platform="Android" Value="SolomonSansLight.otf#Solomon Sans" />
             <On Platform="iOS" Value="SolomonSansLight" />
@@ -76,6 +78,11 @@
         <OnPlatform x:TypeArguments="x:String" x:Key="CalibriBold">
             <On Platform="Android" Value="Calibri Bold.ttf#Calibri" />
             <On Platform="iOS" Value="Calibri Bold" />
+        </OnPlatform>
+
+        <OnPlatform x:TypeArguments="x:String" x:Key="MontserratExtraBold">
+            <On Platform="Android" Value="Montserrat-ExtraBold.ttf#Montserrat" />
+            <On Platform="iOS" Value="Montserrat-ExtraBold" />
         </OnPlatform>
 
     </Application.Resources>

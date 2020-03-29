@@ -8,7 +8,8 @@
              xmlns:gradient="clr-namespace:Syncfusion.XForms.Graphics;assembly=Syncfusion.Core.XForms"
              xmlns:button="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
              xmlns:magic="clr-namespace:MagicGradients;assembly=MagicGradients" NavigationPage.HasNavigationBar="False"
-             xmlns:controls="clr-namespace:Cybertruck.Controls" x:Name="page1"
+             xmlns:controls="clr-namespace:Cybertruck.Controls"
+    xmlns:abstractions="clr-namespace:ImageCircle.Forms.Plugin.Abstractions;assembly=ImageCircle.Forms.Plugin" x:Name="page1"
              mc:Ignorable="d" StyleId="contentpage" BackgroundColor="#FF31353C"
              x:Class="Cybertruck.Views.Page1">
     <abstraction:BaseContentPage.Padding>
@@ -18,161 +19,6 @@
         </OnPlatform>
     </abstraction:BaseContentPage.Padding>
     <Grid>
-        <Grid x:Name="Grid1">
-            <magic:GradientView VerticalOptions="FillAndExpand">
-                <magic:GradientView.GradientSource>
-                    <magic:LinearGradient>
-                        <magic:GradientStop Color="#FF32373d" Offset="0.6" />
-                        <magic:GradientStop Color="#FF18181E" Offset="1" />
-                    </magic:LinearGradient>
-                </magic:GradientView.GradientSource>
-            </magic:GradientView>
-
-            <Grid Padding="0,0,0,10">
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="*"/>
-                    <RowDefinition Height="1.5*"/>
-                    <RowDefinition Height="*"/>
-                </Grid.RowDefinitions>
-
-                <Grid Padding="0,5,0,0">
-                    <controls:SettingControl VerticalOptions="Start" HorizontalOptions="End" ControlImage="gear.png"/>
-
-                    <StackLayout VerticalOptions="End"
-                             Padding="0,0,0,30"
-                             Spacing="-10">
-
-                        <Label Text="Tesla"
-                           HorizontalOptions="Center"
-                           TextColor="DarkGray">
-                            <Label.FontSize>
-                                <OnPlatform x:TypeArguments="x:Double">
-                                    <On Platform="Android" Value="15"/>
-                                    <!--18-->
-                                    <On Platform="iOS" Value="15"/>
-                                </OnPlatform>
-                            </Label.FontSize>
-                        </Label>
-
-                        <Label Text="Cybertruck"    FontFamily="{DynamicResource CalibriBold}"
-                           HorizontalOptions="Center"
-                           TextColor="White" 
-                           FontAttributes="Bold">
-                            <Label.FontSize>
-                                <OnPlatform x:TypeArguments="x:Double">
-                                    <On Platform="Android" Value="35"/>
-                                    <!--45-->
-                                    <On Platform="iOS" Value="35"/>
-                                </OnPlatform>
-                            </Label.FontSize>
-                        </Label>
-                    </StackLayout>
-                </Grid>
-
-                <Grid Grid.Row="1" 
-                  Padding="0">
-                    <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
-                        <Label Text="297" FontFamily="{DynamicResource SolomanSansLight}"  
-                           Margin="0,0,0,0"
-                           HorizontalOptions="Center"  FontAttributes="None"
-                           TextColor="White">
-                            <Label.FontSize>
-                                <OnPlatform x:TypeArguments="x:Double">
-                                    <On Platform="Android" Value="110"/>
-                                    <!--140-->
-                                    <On Platform="iOS" Value="110"/>
-                                    <!--130-->
-                                </OnPlatform>
-                            </Label.FontSize>
-                        </Label>
-                        <Label Text="km" 
-                            Margin="0,15,0,0"  
-                            HorizontalOptions="Center" 
-                            TextColor="White"
-                            FontSize="Small">
-                            <Label.FontSize>
-                                <OnPlatform x:TypeArguments="x:Double">
-                                    <On Platform="Android" Value="15"/>
-                                    <!--18-->
-                                    <On Platform="iOS" Value="15"/>
-                                    <!--18-->
-                                </OnPlatform>
-                            </Label.FontSize>
-                        </Label>
-                    </StackLayout>
-
-                    <Image Source="shadow.png" 
-                       VerticalOptions="End"
-                       Aspect="AspectFit"
-                       Margin="0,0,0,0"/>
-
-                </Grid>
-
-                <Image Grid.Row="1" 
-                   Source="car.png" 
-                   Aspect="AspectFill" 
-                   Margin="0,40,0,0"/>
-
-                <Image Grid.Row="2" Margin="0,25,0,0" Source="circleshadow.png" HeightRequest="110" WidthRequest="110" Rotation="-20" Aspect="AspectFit"                    HorizontalOptions="Center" VerticalOptions="Center"/>
-
-                <Grid Grid.Row="2"    
-                      RowSpacing="0" 
-                      Padding="0,20,0,0">
-                    <!--Padding="0,25,0,20"-->
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="Auto"/>
-                        <RowDefinition Height="*"/>
-                    </Grid.RowDefinitions>
-                    <Label Text="A/C is turned on"
-                           HorizontalOptions="Center"
-                           TextColor="DarkGray"
-                           FontSize="15"/>
-                    <!--18-->
-
-                    <!--80 :=> 100-->
-                    <StackLayout Grid.Row="1" Spacing="10" VerticalOptions="End">
-                        <Grid Padding="0">
-                            <Grid.GestureRecognizers>
-                                <TapGestureRecognizer Tapped="ButtonTapped"/>
-                            </Grid.GestureRecognizers>
-                            <button:SfButton HorizontalOptions="Center"
-                                         VerticalOptions="Center" IsEnabled="False"
-                                         HeightRequest="80"
-                                         WidthRequest="80" x:Name="ButtonControl2"
-                                         CornerRadius="80"
-                                         BorderColor="#FF0E9BED" 
-                                         BorderWidth="3">
-                                <gradient:SfGradientView>
-                                    <gradient:SfGradientView.BackgroundBrush>
-                                        <gradient:SfLinearGradientBrush>
-                                            <gradient:SfLinearGradientBrush.GradientStops>
-                                                <gradient:SfGradientStop Color="#FF0361A7" Offset="0.4" x:Name="SfGradientStop21"/>
-                                                <gradient:SfGradientStop Color="#FF0E9BED" Offset="1.0"  x:Name="SfGradientStop22"/>
-                                            </gradient:SfLinearGradientBrush.GradientStops>
-                                        </gradient:SfLinearGradientBrush>
-                                    </gradient:SfGradientView.BackgroundBrush>
-                                </gradient:SfGradientView>
-
-                            </button:SfButton>
-
-                            <Image Source="lock.png"
-                               HeightRequest="25" 
-                               HorizontalOptions="Center" />
-                        </Grid>
-
-                        <Label Text="Tap to open the car"
-                           HorizontalOptions="Center"  
-                           TextColor="White"
-                           FontSize="12"  
-                           FontAttributes="Bold"/>
-
-                        <!--15-->
-                    </StackLayout>
-                </Grid>
-            </Grid>
-
-        </Grid>
-
         <Grid x:Name="Grid2">
             <magic:GradientView VerticalOptions="FillAndExpand">
                 <magic:GradientView.GradientSource>
@@ -182,144 +28,166 @@
                     </magic:LinearGradient>
                 </magic:GradientView.GradientSource>
             </magic:GradientView>
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height=".9*"/>
+                    <RowDefinition Height="1.5*"/>
+                    <RowDefinition Height=".8*"/>
+                </Grid.RowDefinitions>
 
-            <ScrollView>
-                <Grid>
+                <Grid RowSpacing="-10">
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="*"/>
-                        <RowDefinition Height="1.5*"/>
+                        <RowDefinition Height="0.8*"/>
                         <RowDefinition Height="*"/>
                     </Grid.RowDefinitions>
-
-                    <Grid Padding="0,5,0,0">
-                        <controls:SettingControl VerticalOptions="Start" HorizontalOptions="End" ControlImage="gear.png"/>
-                        
-                        <StackLayout VerticalOptions="End"
-                             Padding="0,0,0,30"
-                             Spacing="-10">
-                            <Label Text="Tesla"
-                           HorizontalOptions="Center"
-                           TextColor="DarkGray">
-                                <Label.FontSize>
-                                    <OnPlatform x:TypeArguments="x:Double">
-                                        <On Platform="Android" Value="18"/>
-                                        <On Platform="iOS" Value="18"/>
-                                    </OnPlatform>
-                                </Label.FontSize>
-                            </Label>
-
-                            <Label Text="Cybertruck"    FontFamily="{DynamicResource CalibriBold}"
-                           HorizontalOptions="Center"
-                           TextColor="White" 
-                           FontAttributes="Bold">
-                                <Label.FontSize>
-                                    <OnPlatform x:TypeArguments="x:Double">
-                                        <On Platform="Android" Value="45"/>
-                                        <On Platform="iOS" Value="45"/>
-                                    </OnPlatform>
-                                </Label.FontSize>
-                            </Label>
-                        </StackLayout>
-                    </Grid>
-
-                    <Grid Grid.Row="1" 
-                      Padding="0">
-                        <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
-                            <Label Text="297" FontFamily="{DynamicResource SolomanSansLight}"
-                               Margin="0,0,0,0"
-                               HorizontalOptions="Center"  FontAttributes="None"
-                               TextColor="White">
-                                <Label.FontSize>
-                                    <OnPlatform x:TypeArguments="x:Double">
-                                        <On Platform="Android" Value="140"/>
-                                        <On Platform="iOS" Value="130"/>
-                                    </OnPlatform>
-                                </Label.FontSize>
-                            </Label>
-                            <Label Text="km" 
-                                Margin="0,15,0,0"  
-                                HorizontalOptions="Center" 
-                                TextColor="White"
-                                FontSize="Small">
-                                <Label.FontSize>
-                                    <OnPlatform x:TypeArguments="x:Double">
-                                        <On Platform="Android" Value="18"/>
-                                        <On Platform="iOS" Value="18"/>
-                                    </OnPlatform>
-                                </Label.FontSize>
-                            </Label>
-                        </StackLayout>
-
-                        <Image Source="shadow.png" 
-                           VerticalOptions="End"
-                           Aspect="AspectFit"
-                           Margin="0,0,0,0"/>
+                    <Grid>
+                        <controls:SettingControl HorizontalOptions="End"  VerticalOptions="Center"  
+                                                    ControlImage="gear.png"/>
 
                     </Grid>
+                    <StackLayout Grid.Row="1" VerticalOptions="Center"
+                                 Spacing="-5">
+                        <Label Text="Tesla"
+                                HorizontalOptions="Center"
+                                TextColor="DarkGray"
+                                FontSize="Default"/>
 
-                    <Image Grid.Row="1" 
-                       Source="car.png" 
-                       Aspect="AspectFill" 
-                       Margin="0,40,0,0"/>
+                        <Label Text="Cybertruck"    FontFamily="{DynamicResource CalibriBold}"
+                            HorizontalOptions="Center"
+                            TextColor="White" 
+                            FontAttributes="Bold" FontSize="35"/>
+                    </StackLayout>
+                </Grid>
 
-                    <Image Grid.Row="2" Margin="0,30,0,0" Source="circleshadow.png" HeightRequest="150" WidthRequest="150" Rotation="-20" Aspect="AspectFit"                    HorizontalOptions="Center" VerticalOptions="Center"/>
+                <StackLayout Grid.Row="1" Spacing="-90">
 
-                    <Grid Grid.Row="2"    
-                      RowSpacing="0" 
-                      Padding="0,25,0,10">
+                    <StackLayout Orientation="Horizontal" HorizontalOptions="Center"  >
+                        <Label Text="297" FontFamily="{DynamicResource SolomanSansLight}"
+                                    HorizontalOptions="Center"  FontAttributes="None"
+                                    TextColor="White" FontSize="130"/>
+                        <Label Text="km" 
+                                    Margin="0,15,0,0"  
+                                    HorizontalOptions="Center" 
+                                    TextColor="White"
+                                    FontSize="Small"/>
+                    </StackLayout>
+
+                    <Image Source="car.png" Aspect="AspectFit"   />
+
+                </StackLayout>
+
+                <Grid Grid.Row="2">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <Label Text="A/C is turned on"
+                               HorizontalOptions="Center"
+                               TextColor="DarkGray"
+                               FontSize="17"/>
+
+                    <Grid Grid.Row="1" Margin="0,-10,0,-20" Padding="30" x:Name="g1">
+                        <Grid.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="ButtonTapped"/>
+                        </Grid.GestureRecognizers>
+                        <Image  Source="circleshadow.png"   Rotation="-20" Aspect="AspectFit"    Margin="-40"         x:Name="f1"                             HorizontalOptions="Center" VerticalOptions="Center"
+                            HeightRequest="{Binding Source={x:Reference g1}, Path=Height, Converter={StaticResource AddHeightConverter}, ConverterParameter=-10}" 
+                             WidthRequest="{Binding Source={x:Reference f1}, Path=Height, Converter={StaticResource AddHeightConverter}, ConverterParameter=0}"/>
+                        <abstractions:CircleImage FillColor="Transparent" Aspect="Fill" x:Name="circleImage" />
+
+                        <button:SfButton HorizontalOptions="Center"   IsEnabled="False"    
+                                                      BackgroundColor="Transparent"
+                                                 VerticalOptions="Center" x:Name="ButtonControl"
+                                                 HeightRequest="{Binding Source={x:Reference circleImage}, Path=Height}"
+                                                 WidthRequest="{Binding Source={x:Reference ButtonControl}, Path=Height}"
+                                                 CornerRadius="{Binding Source={x:Reference ButtonControl}, Path=Height}"
+                                                 BorderColor="#FF0E9BED" 
+                                                 BorderWidth="2">
+                            <gradient:SfGradientView>
+                                <gradient:SfGradientView.BackgroundBrush>
+                                    <gradient:SfLinearGradientBrush>
+                                        <gradient:SfLinearGradientBrush.GradientStops>
+                                            <gradient:SfGradientStop Color="#FF0361A7" Offset="0.4" x:Name="SfGradientStop1"/>
+                                            <gradient:SfGradientStop Color="#FF0E9BED" Offset="1.0" x:Name="SfGradientStop2"/>
+                                        </gradient:SfLinearGradientBrush.GradientStops>
+                                    </gradient:SfLinearGradientBrush>
+                                </gradient:SfGradientView.BackgroundBrush>
+                            </gradient:SfGradientView>
+
+                        </button:SfButton>
+
+                        <Image Source="lock.png" x:Name="image"
+                                   HeightRequest="20" 
+                                   HorizontalOptions="Center" />
+
+
+                    </Grid>
+
+                    <Label Grid.Row="2" 
+                           Margin="0,-10,0,10"
+                            Text="Tap to open the car"
+                            HorizontalOptions="Center"  
+                            TextColor="White" 
+                            FontSize="Small"
+                            FontAttributes="Bold"/>
+                </Grid>
+
+
+                <!--<Grid Grid.Row="2" RowSpacing="0">
                         <Grid.RowDefinitions>
                             <RowDefinition Height="Auto"/>
                             <RowDefinition Height="*"/>
+                            <RowDefinition Height="Auto"/>
                         </Grid.RowDefinitions>
-                        <Label Text="A/C is turned on"
-                       HorizontalOptions="Center"
-                       TextColor="DarkGray"
-                       FontSize="18"/>
+                    <Label Text="{Binding Source={x:Reference ButtonControl}, Path=Height}"
+                               HorizontalOptions="Center"
+                               TextColor="DarkGray"
+                               FontSize="17"/>
+                    -->
+                <!--<Image Grid.Row="1" Source="circleshadow.png"   Rotation="-20" Aspect="AspectFit"                                               HorizontalOptions="Center" VerticalOptions="Center"
+                            HeightRequest="{Binding Source={x:Reference ButtonGrid}, Path=Height, Converter={StaticResource AddHeightConverter}, ConverterParameter=0}"
+                             WidthRequest="{Binding Source={x:Reference ButtonGrid}, Path=Height}"/>-->
+                <!--
 
-                        <StackLayout Grid.Row="1" Spacing="10" VerticalOptions="End">
-                            <Grid Padding="0">
-                                <Grid.GestureRecognizers>
-                                    <TapGestureRecognizer Tapped="ButtonTapped"/>
-                                </Grid.GestureRecognizers>
+                    <Grid x:Name="ButtonGrid" Grid.Row="1" HorizontalOptions="Center" HeightRequest="100" VerticalOptions="End"  BackgroundColor="Red">
+                        <abstractions:CircleImage   HeightRequest="{Binding Source={x:Reference ButtonControl}, Path=Height, Converter={StaticResource AddHeightConverter}}" FillColor="Yellow" Aspect="Fill"    
+                                                 WidthRequest="{Binding Source={x:Reference ButtonControl}, Path=Height}" />
 
-                                <button:SfButton HorizontalOptions="Center"
-                                             IsEnabled="False" BackgroundColor="Transparent"
-                                         VerticalOptions="Center"
-                                         HeightRequest="100" x:Name="ButtonControl"
-                                         WidthRequest="100"
-                                         CornerRadius="100"
-                                         BorderColor="#FF0E9BED" 
-                                         BorderWidth="3">
-                                    <gradient:SfGradientView>
-                                        <gradient:SfGradientView.BackgroundBrush>
-                                            <gradient:SfLinearGradientBrush>
-                                                <gradient:SfLinearGradientBrush.GradientStops>
-                                                    <gradient:SfGradientStop Color="#FF0361A7" Offset="0.4" x:Name="SfGradientStop1"/>
-                                                    <gradient:SfGradientStop Color="#FF0E9BED" Offset="1.0" x:Name="SfGradientStop2"/>
-                                                </gradient:SfLinearGradientBrush.GradientStops>
-                                            </gradient:SfLinearGradientBrush>
-                                        </gradient:SfGradientView.BackgroundBrush>
-                                    </gradient:SfGradientView>
+                        <button:SfButton HorizontalOptions="Center"  
+                                                      BackgroundColor="Transparent"
+                                                 VerticalOptions="Center" x:Name="ButtonControl"
+                                                 HeightRequest="{Binding Source={x:Reference ButtonControl}, Path=Height, Converter={StaticResource AddHeightConverter}}"
+                                                 WidthRequest="{Binding Source={x:Reference ButtonControl}, Path=Height}"
+                                                 CornerRadius="{Binding Source={x:Reference ButtonGrid}, Path=Height}"
+                                                 BorderColor="#FF0E9BED" 
+                                                 BorderWidth="2">
+                                <gradient:SfGradientView>
+                                    <gradient:SfGradientView.BackgroundBrush>
+                                        <gradient:SfLinearGradientBrush>
+                                            <gradient:SfLinearGradientBrush.GradientStops>
+                                                <gradient:SfGradientStop Color="#FF0361A7" Offset="0.4" x:Name="SfGradientStop1"/>
+                                                <gradient:SfGradientStop Color="#FF0E9BED" Offset="1.0" x:Name="SfGradientStop2"/>
+                                            </gradient:SfLinearGradientBrush.GradientStops>
+                                        </gradient:SfLinearGradientBrush>
+                                    </gradient:SfGradientView.BackgroundBrush>
+                                </gradient:SfGradientView>
 
-                                </button:SfButton>
+                            </button:SfButton>
 
-                                <Image Source="lock.png"
-                                   x:Name="image"
-                               HeightRequest="25" 
-                               HorizontalOptions="Center" />
+                            <Image Source="lock.png" x:Name="image"
+                                   HeightRequest="20" 
+                                   HorizontalOptions="Center" />
+                        </Grid>
 
-                            </Grid>
-
-                            <Label Text="Tap to open the car"
-                           HorizontalOptions="Center"  
-                           TextColor="White"
-                           FontSize="15"
-                           FontAttributes="Bold"/>
-                        </StackLayout>
-                    </Grid>
-                </Grid>
-            </ScrollView>
-
+                    <Label Grid.Row="2" 
+                            Text="Tap to open the car"
+                            HorizontalOptions="Center"  
+                            TextColor="White"  BackgroundColor="Red"
+                            FontSize="15"
+                            FontAttributes="Bold"/>
+                </Grid>-->
+            </Grid>
         </Grid>
     </Grid>
 </abstraction:BaseContentPage>

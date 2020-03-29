@@ -9,7 +9,9 @@
              xmlns:controls="clr-namespace:Cybertruck.Controls"
              xmlns:abstractions="clr-namespace:ImageCircle.Forms.Plugin.Abstractions;assembly=ImageCircle.Forms.Plugin"
              xmlns:gauge="clr-namespace:Syncfusion.SfGauge.XForms;assembly=Syncfusion.SfGauge.XForms"
-             mc:Ignorable="d"
+    xmlns:gradient="clr-namespace:Syncfusion.XForms.Graphics;assembly=Syncfusion.Core.XForms"
+    xmlns:button="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
+    mc:Ignorable="d"
              BackgroundColor="#FF18181E"
              x:Class="Cybertruck.Views.Page3">
     <abstraction:BaseContentPage.Padding>
@@ -21,63 +23,60 @@
         </OnPlatform>
     </abstraction:BaseContentPage.Padding>
 
-    <ScrollView x:Name="scrollview" InputTransparent="True" VerticalOptions="Start">
+    <Grid>
+        <magic:GradientView VerticalOptions="FillAndExpand">
+            <magic:GradientView.GradientSource>
+                <magic:LinearGradient>
+                    <magic:GradientStop Color="#FF31353C" Offset="0.4" />
+                    <magic:GradientStop Color="#FF1E1F24" Offset="1" />
+                </magic:LinearGradient>
+            </magic:GradientView.GradientSource>
+        </magic:GradientView>
+
         <Grid>
-            <magic:GradientView VerticalOptions="FillAndExpand">
-                <magic:GradientView.GradientSource>
-                    <magic:LinearGradient>
-                        <magic:GradientStop Color="#FF31353C" Offset="0.4" />
-                        <magic:GradientStop Color="#FF1E1F24" Offset="1" />
-                    </magic:LinearGradient>
-                </magic:GradientView.GradientSource>
-            </magic:GradientView>
+            <Grid.RowDefinitions>
+                <RowDefinition Height=".15*"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Grid BackgroundColor="Transparent">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
 
+                <Grid>
+                    <controls:SettingControl VerticalOptions="Center" HorizontalOptions="Center"/>
 
-            <StackLayout Spacing="0">
-
-                <StackLayout Orientation="Horizontal"  
-                     HorizontalOptions="FillAndExpand"
-                     VerticalOptions="Start">
-
-                    <!--#region Settings button 1 -->
-                    <Grid>
-                        <controls:SettingControl VerticalOptions="Start" HorizontalOptions="End">
-                            <controls:SettingControl.GestureRecognizers>
-                                <TapGestureRecognizer Tapped="GoBack"/>
-                            </controls:SettingControl.GestureRecognizers>
-                        </controls:SettingControl>
-
-
-                        <StackLayout HorizontalOptions="Center"
+                    <StackLayout HorizontalOptions="Center"
                                          VerticalOptions="Center"
                                          Spacing="4">
-                            <BoxView WidthRequest="12" HorizontalOptions="Center" VerticalOptions="Center"
+                        <BoxView WidthRequest="12" HorizontalOptions="Center" VerticalOptions="Center"
                                      Color="White"
                                      HeightRequest="1"/>
-                            <BoxView WidthRequest="7" HorizontalOptions="Start" VerticalOptions="Center"
+                        <BoxView WidthRequest="7" HorizontalOptions="Start" VerticalOptions="Center"
                                      Color="White"
                                      HeightRequest="1"/>
-                        </StackLayout>
-                    </Grid>
-                    <!--#endregion-->
+                    </StackLayout>
+                </Grid>
 
-                    <StackLayout Spacing="0"
+                <StackLayout Grid.Column="1" Spacing="0"
                                  HorizontalOptions="FillAndExpand"
                                  VerticalOptions="Center">
-                        <Label Text="Tesla"
+                    <Label Text="Tesla"
                                HorizontalOptions="Center"
                                VerticalOptions="Center"
                                Style="{DynamicResource LabelMicroStyle}"/>
-                        <Label Text="Cybertruck" 
+                    <Label Text="Cybertruck" 
                                HorizontalOptions="Center"
                                VerticalOptions="Center"
-                               Style="{DynamicResource LabelHeaderStyle}"/>
-                    </StackLayout>
-
-                    <controls:SettingControl VerticalOptions="Start" HorizontalOptions="End" ControlImage="user.png" ImageHeight="12"/>
+                               Style="{DynamicResource LabelSmallStyle}"/>
                 </StackLayout>
 
-                <Frame BorderColor="#FF40444B"
+                <controls:SettingControl Grid.Column="2" VerticalOptions="Center" HorizontalOptions="Center" ControlImage="user.png" ImageHeight="12"/>
+            </Grid>
+
+            <Frame Grid.Row="1" BorderColor="#FF40444B"
                         HasShadow="True"
                         IsClippedToBounds="True"
                         BackgroundColor="Transparent" 
@@ -85,27 +84,26 @@
                         Padding="0,5"
                         VerticalOptions="Start">
 
-                    <Grid VerticalOptions="FillAndExpand">
+                <Grid VerticalOptions="FillAndExpand" RowSpacing="0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height=".9*"/>
+                        <RowDefinition Height="2.5*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="1*"/>
+                    </Grid.RowDefinitions>
+            
+                    <Grid VerticalOptions="Start"  
+                          Margin="30,10,20,0">
                         <Grid.RowDefinitions>
-                            <RowDefinition Height="Auto"/>
-                            <RowDefinition Height="335"/>
-                            <RowDefinition Height="Auto"/>
                             <RowDefinition Height="Auto"/>
                             <RowDefinition Height="Auto"/>
                         </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
 
-                        <Grid VerticalOptions="Start" 
-                                  Margin="30,10,20,0">
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="Auto"/>
-                                <RowDefinition Height="Auto"/>
-                            </Grid.RowDefinitions>
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="*"/>
-                                <ColumnDefinition Width="*"/>
-                            </Grid.ColumnDefinitions>
-
-                            <BoxView BackgroundColor="#FF15161A"
+                        <BoxView BackgroundColor="#FF15161A"
                                          Margin="0,0,0,0"
                                          Grid.ColumnSpan="2"
                                          HorizontalOptions="Center"
@@ -113,180 +111,200 @@
                                          HeightRequest="3.5"
                                          WidthRequest="45"/>
 
-                            <StackLayout Grid.Row="1" 
+                        <StackLayout Grid.Row="1" 
                                              VerticalOptions="Center">
-                                <Label Text="A/C is ON"
+                            <Label Text="A/C is ON"
                                             Style="{DynamicResource LabelLargeBoldStyle}"/>
-                                <Label Text="Currently 27&#186;C" 
+                            <Label Text="Currently 27&#186;C" 
                                              Style="{DynamicResource LabelMicroStyle}"/>
-                                <Label Text="Will change in 2min" 
+                            <Label Text="Will change in 2min" 
                                               Margin="0,-5,0,0"
                                            Style="{DynamicResource LabelMicroStyle}"/>
-                            </StackLayout>
+                        </StackLayout>
 
-                            <controls:PowerbuttonControl Grid.Row="1" Grid.Column="1" HorizontalOptions="End" Margin="0,0,10,0"/>
+                        <controls:PowerbuttonControl Grid.Row="1" Grid.Column="1" HorizontalOptions="End"/>
+                    </Grid>
+
+                    <Image Grid.Row="1"  HorizontalOptions="Center" VerticalOptions="Center" Rotation="-20" Source="circleshadow.png"            Aspect="AspectFit" />
+
+                    <Grid Grid.Row="1" x:Name="GridGuage" Padding="0" HeightRequest="270" WidthRequest="270" Scale="1.0" HorizontalOptions="Center" VerticalOptions="Center">
+                        <Grid>
+                            <abstractions:CircleImage Margin="20" FillColor="#FF131315" Aspect="AspectFit" BorderColor="#FF131315" BorderThickness="1"/>
+                            <abstractions:CircleImage Margin="25" FillColor="#FF18181A" Aspect="AspectFit" BorderThickness="1"  BorderColor="#FF1E1E20"/>
+                            <abstractions:CircleImage Margin="70"  FillColor="#FF141416" Aspect="AspectFit" BorderThickness="1" BorderColor="#FF1E1E20"/>
                         </Grid>
 
-                        <Image Grid.Row="1" HorizontalOptions="Center" VerticalOptions="Center" Rotation="-20" Source="circleshadow.png" Aspect="AspectFill" />
+                        <!--<Frame HasShadow="True" x:Name="frame1" BackgroundColor="#FF131315" Margin="20"
+                               HorizontalOptions="Center" VerticalOptions="Center" Padding="0"
+                               HeightRequest="{Binding Source={x:Reference GridGuage}, Path=Height}"
+                                WidthRequest="{Binding Source={x:Reference frame1}, Path=Height}"
+                                CornerRadius="{Binding Source={x:Reference frame1}, Path=Height}">
+                            <Frame HasShadow="True" x:Name="frame2" BackgroundColor="#FF18181A" Margin="5"
+                               HorizontalOptions="Center" VerticalOptions="Center" Padding="0" BorderColor="#FF1E1E20"
+                               HeightRequest="{Binding Source={x:Reference GridGuage}, Path=Height}"
+                                WidthRequest="{Binding Source={x:Reference frame1}, Path=Height}"
+                                CornerRadius="{Binding Source={x:Reference frame1}, Path=Height}">
+                                <Frame HasShadow="True" x:Name="frame3" BackgroundColor="#FF131315" Margin="40" BorderColor="#FF1E1E20"
+                               HorizontalOptions="Center" VerticalOptions="Center" Padding="0"
+                               HeightRequest="{Binding Source={x:Reference GridGuage}, Path=Height}"
+                                WidthRequest="{Binding Source={x:Reference frame1}, Path=Height}"
+                                CornerRadius="{Binding Source={x:Reference frame1}, Path=Height}">
 
-                        <Grid Grid.Row="1"  
-                                  x:Name="grid1"
-                                  Padding="25">
-                            <Grid>
-                                <abstractions:CircleImage Margin="25" FillColor="#FF131315" Aspect="AspectFit" BorderColor="#FF131315" BorderThickness="1"/>
-                                <abstractions:CircleImage Margin="30" FillColor="#FF18181A" Aspect="AspectFit" BorderThickness="1"  BorderColor="#FF1E1E20"/>
-                                <abstractions:CircleImage Margin="70"  FillColor="#FF141416" Aspect="AspectFit" BorderThickness="1" BorderColor="#FF1E1E20"/>
-                            </Grid>
+                                </Frame>
+                            </Frame>
+                        </Frame>-->
 
-                            <StackLayout HorizontalOptions="Center"
+                        <StackLayout HorizontalOptions="Center"
                                              VerticalOptions="Center" 
                                              Spacing="-5">
-                                <StackLayout Spacing="0" Orientation="Horizontal">
-                                    <Label Text="{Binding CoolingValue}" 
+                            <StackLayout Spacing="0" Orientation="Horizontal">
+                                <Label Text="{Binding CoolingValue}"  FontFamily="{DynamicResource MontserratExtraBold}"
                                            TextColor="White"
                                            HorizontalOptions="Center"
                                            VerticalOptions="Center"
                                            FontSize="30"
                                            FontAttributes="Bold"/>
-                                    <Label Text="&#186;C" 
+                                <Label Text="&#186;C" 
                                            TextColor="White"
                                            HorizontalOptions="Center"
                                            VerticalOptions="Center"
                                            FontSize="30"
                                            FontAttributes="Bold"/>
-                                  
-                                </StackLayout>
-                                <Label Text="Cooling..."
+
+                            </StackLayout>
+                            <Label Text="Cooling..."
                                            TextColor="White" Style="{DynamicResource LabelMicroStyle}"
                                            HorizontalOptions="Center"
                                            VerticalOptions="Center" />
-                            </StackLayout>
+                        </StackLayout>
 
-                            <Grid IsEnabled="False">
-                                <gauge:SfCircularGauge >
+                        <Grid IsEnabled="False">
+                            <gauge:SfCircularGauge>
+                                <gauge:SfCircularGauge.Scales>
+                                    <gauge:Scale ShowLabels="False" ShowTicks="False" ShowRim="False"  SweepAngle="{Binding Path=Value, Source={x:Reference Pointer1}}" StartAngle="90"  StartValue="0" EndValue="90"  >
 
-                                    <gauge:SfCircularGauge.Scales>
-                                        <gauge:Scale ShowLabels="False" ShowTicks="False" ShowRim="False"  SweepAngle="{Binding Path=Value, Source={x:Reference Pointer1}}" StartAngle="90"  StartValue="0" EndValue="90"  >
+                                        <gauge:Scale.Pointers>
+                                            <gauge:RangePointer x:Name="RangePointer"  Value="90" Offset="0.785" Thickness="40"  RangeCap="Start" Color="#0682F6"/>
 
-                                            <gauge:Scale.Pointers>
-                                                <gauge:RangePointer x:Name="RangePointer"  Value="90" Offset="0.765" Thickness="35"  RangeCap="Start" Color="#0682F6"/>
+                                            <gauge:MarkerPointer EnableDragging="True" MarkerShape="Circle" MarkerWidth="28" MarkerHeight="28" Color="Transparent"
+                                         Value="{Binding Path=Value, Source={x:Reference Pointer1}}" Offset="0.85"/>
+                                        </gauge:Scale.Pointers>
 
-                                                <gauge:MarkerPointer EnableDragging="True" MarkerShape="Circle" MarkerWidth="28" MarkerHeight="28" Color="Transparent"
-                                         Value="{Binding Path=Value, Source={x:Reference Pointer1}}" Offset="0.8"/>
-                                            </gauge:Scale.Pointers>
+                                    </gauge:Scale>
 
-                                        </gauge:Scale>
+                                    <gauge:Scale  ShowLabels="False" ShowTicks="False" ShowRim="False" StartAngle="0" SweepAngle="360"  >
+                                    </gauge:Scale>
 
-                                        <gauge:Scale  ShowLabels="False" ShowTicks="False" ShowRim="False" StartAngle="0" SweepAngle="360"  >
-                                        </gauge:Scale>
+                                </gauge:SfCircularGauge.Scales>
+                            </gauge:SfCircularGauge>
+                        </Grid>
 
-                                    </gauge:SfCircularGauge.Scales>
-
-
-                                </gauge:SfCircularGauge>
-                            </Grid>
-
+                        <Grid>
+                            <!--#region Inner Guage -->
                             <Grid>
-                                <!--#region Inner Guage -->
-                                <Grid >
-                                    <gauge:SfCircularGauge PointerPositionChanged="SfCircularGauge_PointerPositionChanged">
-                                        <gauge:SfCircularGauge.Scales>
-                                            <gauge:Scale  ShowLabels="False" ScaleStartOffset="1" ShowRim="False"  SweepAngle="315" MinorTicksPerInterval="0" StartAngle="90" StartValue="0" EndValue="315"  >
-                                                <gauge:Scale.Pointers>
-                                                    <gauge:MarkerPointer  Offset="0.75" x:Name="Pointer1" EnableDragging="True" MarkerShape="Image" ImageSource="thumb.png" Color="#FF262A2D" MarkerHeight="40" MarkerWidth="40" Value="225"/>
-                                                </gauge:Scale.Pointers>
-
-                                                <gauge:Scale.MajorTickSettings>
-                                                    <gauge:TickSettings Color ="Transparent" Thickness="2" Length="10" Offset="0.97"/>
-                                                </gauge:Scale.MajorTickSettings>
-                                            </gauge:Scale>
-
-                                        </gauge:SfCircularGauge.Scales>
-                                    </gauge:SfCircularGauge>
-                                </Grid>
-                                <!--#endregion-->
-
-                                <!--#region Outer Ticks -->
-                                <gauge:SfCircularGauge>
+                                <gauge:SfCircularGauge PointerPositionChanged="SfCircularGauge_PointerPositionChanged">
                                     <gauge:SfCircularGauge.Scales>
-                                        <gauge:Scale  ShowLabels="False" ShowRim="False" SweepAngle="360" MinorTicksPerInterval="0" StartAngle="90" StartValue="0" EndValue="360" Interval="45">
+                                        <gauge:Scale ShowLabels="False" ScaleStartOffset="1" ShowRim="False"  SweepAngle="315" MinorTicksPerInterval="0" StartAngle="90" StartValue="0" EndValue="315"  >
                                             <gauge:Scale.Pointers>
-                                                <!--<gauge:MarkerPointer EnableDragging="True" MarkerShape="Circle" Color="Red" MarkerHeight="40" MarkerWidth="40" Value="0" />-->
+                                                <gauge:MarkerPointer  Offset="0.753" x:Name="Pointer1" EnableDragging="True" MarkerShape="Image" ImageSource="thumb.png" Color="#FF262A2D" MarkerHeight="42" MarkerWidth="42" Value="225"/>
                                             </gauge:Scale.Pointers>
 
                                             <gauge:Scale.MajorTickSettings>
-                                                <gauge:TickSettings Color ="#FF0E95E6" Thickness="2" Length="10" Offset="0.97"/>
+                                                <gauge:TickSettings Color ="Transparent" Thickness="2" Length="10" Offset="0.97"/>
                                             </gauge:Scale.MajorTickSettings>
                                         </gauge:Scale>
 
                                     </gauge:SfCircularGauge.Scales>
                                 </gauge:SfCircularGauge>
-                                <!--#endregion-->
                             </Grid>
+                            <!--#endregion-->
+
+                            <!--#region Outer Ticks -->
+                            <gauge:SfCircularGauge>
+                                <gauge:SfCircularGauge.Scales>
+                                    <gauge:Scale  ShowLabels="False" ShowRim="False" SweepAngle="360" MinorTicksPerInterval="0" StartAngle="90" StartValue="0" EndValue="360" Interval="45">
+                                        <gauge:Scale.Pointers>
+                                            <!--<gauge:MarkerPointer EnableDragging="True" MarkerShape="Circle" Color="Red" MarkerHeight="40" MarkerWidth="40" Value="0" />-->
+                                        </gauge:Scale.Pointers>
+
+                                        <gauge:Scale.MajorTickSettings>
+                                            <gauge:TickSettings Color ="#FF0E95E6" Thickness="2" Length="10" Offset="0.97"/>
+                                        </gauge:Scale.MajorTickSettings>
+                                    </gauge:Scale>
+
+                                </gauge:SfCircularGauge.Scales>
+                            </gauge:SfCircularGauge>
+                            <!--#endregion-->
                         </Grid>
+                    </Grid>
 
-                        <StackLayout Grid.Row="2"  
-                                     VerticalOptions="Center" Spacing="25" Margin="15,0,15,30">
+                    <Grid Grid.Row="2" VerticalOptions="Center" RowSpacing="10" Margin="15,0,15,10">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
 
-                            <Label Text="Fan speed"
-                                   HorizontalOptions="Center" VerticalOptions="Start"
-                                   Style="{DynamicResource LabelLargeBoldStyle}"/>
+                        <Label Text="Fan speed"
+                               HorizontalOptions="Center" VerticalOptions="Start"
+                               Style="{DynamicResource LabelTitleStyle}"/>
 
-                            <StackLayout Spacing="0">
+                        <StackLayout Spacing="0" Grid.Row="1">
 
 
-                                <Grid Margin="-20,0"
+                            <Grid Margin="-20,0"
                                       VerticalOptions="Center">
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="*"/>
-                                        <ColumnDefinition Width="*"/>
-                                        <ColumnDefinition Width="*"/>
-                                        <ColumnDefinition Width="*"/>
-                                        <ColumnDefinition Width="*"/>
-                                    </Grid.ColumnDefinitions>
-                                    <Label Text="1"
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <Label Text="1"
                                            FontSize="11"
                                            HorizontalOptions="Center" x:Name="Label1"
                                            Style="{DynamicResource LabelMicroStyle}"/>
-                                    <Label Grid.Column="1"
+                                <Label Grid.Column="1"
                                            Text="2" x:Name="Label2"
                                            FontSize="11"
                                            HorizontalOptions="Center"
                                            Style="{DynamicResource LabelMicroStyle}"/>
-                                    <Label Grid.Column="2"
+                                <Label Grid.Column="2"
                                            FontSize="11"
                                            Text="3" x:Name="Label3"
                                            HorizontalOptions="Center"
                                            Style="{DynamicResource LabelMicroStyle}"/>
-                                    <Label Grid.Column="3"
+                                <Label Grid.Column="3"
                                            Text="4" x:Name="Label4"
                                            FontSize="11"
                                            HorizontalOptions="Center"
                                            Style="{DynamicResource LabelMicroStyle}"/>
-                                    <Label Grid.Column="4"
+                                <Label Grid.Column="4"
                                            Text="5" x:Name="Label5"
                                            FontSize="11"
                                            HorizontalOptions="Center"
                                            Style="{DynamicResource LabelMicroStyle}"/>
-                                </Grid>
+                            </Grid>
 
-                                <Slider Maximum="5" Margin="-5,0" WidthRequest="10" x:Name="slider" Value="3"
+                            <Slider Maximum="5" Margin="-5,0" WidthRequest="10" x:Name="slider" Value="3"
                                         ThumbImageSource="smallthumb.png"  
                                         MaximumTrackColor="#FF0F1012"
                                         MinimumTrackColor="#FF0680D1"/>
 
-                            </StackLayout>
                         </StackLayout>
+                    </Grid>
 
-                        <Label Grid.Row="3" 
-                               Margin="0,0,0,5"
-                               Text="Mode"
+                    <Grid Grid.Row="3" Margin="0,-10,0,10">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+                        <Label Text="Mode"
                                HorizontalOptions="Center"
-                               Style="{DynamicResource LabelLargeBoldStyle}"/>
+                               Style="{DynamicResource LabelTitleStyle}"/>
 
                         <!--#region 4 buttons -->
-                        <Grid Grid.Row="4" 
-                                  Padding="20,0" >
+                        <Grid Grid.Row="1" ColumnSpacing="-50">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="*"/>
                                 <ColumnDefinition Width="*"/>
@@ -294,7 +312,7 @@
                                 <ColumnDefinition Width="*"/>
                             </Grid.ColumnDefinitions>
 
-                            <controls:LabelButtonButton HeaderText="Auto" ImageHeight="13"
+                            <controls:LabelButtonButton HeaderText="Auto" ImageHeight="13"  
                                                     ButtonIcon="letterADarkGray.png">
                                 <controls:LabelButtonButton.GestureRecognizers>
                                     <TapGestureRecognizer Tapped="ButtonClicked"/>
@@ -326,12 +344,11 @@
                             </controls:LabelButtonButton>
 
                         </Grid>
-                        <!--#endregion-->
                     </Grid>
+                    <!--#endregion-->
+                </Grid>
 
-                </Frame>
-
-            </StackLayout>
+            </Frame>
         </Grid>
-    </ScrollView>
+    </Grid>
 </abstraction:BaseContentPage>
